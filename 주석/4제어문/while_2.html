@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /*
+            문제 : while 반복문을 사용하여 숫자 1부터 ~~ 30까지 숫자중에서
+                  2의 배수 이면서 6의 배수인 숫자만 반복해서 출력
+        */
+        
+        //조건식 검사하는 조건변수 선언하고 초기값 1로 저장 
+        let i = 1;
+
+
+        //while반복문 형태를 작성해서  숫자 1부터 ~ 30까지 숫자중에서  2의 배수면서 6의 배수인 숫자만! 반복해서 출력
+        while ( i <= 30 ) {
+
+            //반복실행할 실행문;
+            //i변수 저장된 값이 2의 배수면서 6의 배수인 숫자만! 반복해서 출력
+            if( i % 2 === 0  &&   i  %  6  === 0 ){
+                
+                document.write(i ,"<br>");  //<-- 반복 실행문
+            }
+
+            //증감식;
+            i++;   //<-   i = i + 1;      i += 1;
+        }
+
+
+
+
+    </script>
+    
+</body>
+</html>

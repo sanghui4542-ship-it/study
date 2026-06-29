@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   	<!--
+	메소드로 속성 조작
+	───────────────────────────────────────────────────────────────────────────────────────
+	메소드                                    설명
+	───────────────────────────────────────────────────────────────────────────────────────
+	요소노드.getAttribute("속성명");               해당 속성의 값을 반환
+	요소노드.setAttribute("속성명", 값);           해당 속성 값 변경/추가
+	요소노드.removeAttribute("속성명");            해당 속성 삭제
+	-->
+    
+    <a href="http://www.naver.com">네이버</a> <br>
+    <h1 id="hi">안녕</h1> <br>
+    <p class="p1" id="p2">안녕하세요 반갑습니다</p> <br>
+    <h2 class="red-color" id="h">안녕2</h2>
+    
+    <script>
+        /* 주제3. 속성="값" 중에서 "값" 얻기  */
+
+        //순서1. <h1 id="hi">안녕</h1> 요소 선택
+        const h1Value = document.querySelector("#hi").getAttribute("id"); //"hi"
+        console.log(h1Value); //"hi"
+
+        //순서2. <a href="http://www.naver.com">네이버</a> 요소 선택
+        const aEl = document.querySelector("a");
+
+        //순서2-2. "네이버" 변경-> "구글"
+        //결과 -> <a href="http://www.naver.com">구글</a>
+        aEl.innerText = "구글";
+
+        //순서2-3. href="http://www.naver.com" 중에서  "http://www.naver.com" 얻기
+        const href = aEl.getAttribute("href");
+        //결과 ->  "http://www.naver.com" 출력됨 
+        console.log(href);
+
+        //순서2-4. href="http://wwww.naver.com"  을   href="http://www.google.com" 으로 변경
+        //결과 -> <a href="http://www.google.com">구글</a>
+        aEl.setAttribute("href","http://www.google.com");
+
+
+
+        /*  주제2. 속성명="값" 중에서  "값"을 변경 */
+
+        //순서1. <p class="p1" id="p2">안녕하세요 반갑습니다</p> 요소노드 선택
+        const p = document.getElementsByTagName("p")[0];
+
+        //순서2.  id="p2" 중에서  "p2" -> "p1" 로 변경
+        //결과 -> <p class="p1" id="p1">안녕하세요 반갑습니다</p>
+        p.setAttribute("id","p1");
+
+
+
+        /*  주제1. 선택한 요소노드의 속성 삭제 */
+        
+        //순서1. <h2 class="red-color" id="h">안녕2</h2> 요소노드 선택
+        const h2 = document.querySelector(".red-color");
+
+        //순서2. id="h" 삭제
+        //결과 -> <h1 class="red-color">안녕2</h2>
+        h2.removeAttribute("id");
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

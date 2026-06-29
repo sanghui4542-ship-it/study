@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        //웹브라우저 창에 load이벤트 등록후 load이벤트 처리 함수 정의
+        window.onload = function(){
+
+            const childNodes = document.body.childNodes;
+            /*
+            childNodes속성을 사용하면 <body>의 모든자식노드(텍스트포함)을
+            NodeList(유사배열)에 담아 NodeList(유사배열)을 반환 해줍니다.
+
+            참고. NodeList 유사배열을  실제 일반배열로 변환해서 작업 해야 함
+
+            참고. NodeList 유사배열을 일반배열로 변환 하는 방법
+
+                 Array객체의 from(NodeList유사배열); 메소드 호출하면
+                 실제 일반배열에 모든 자식노드들을 모두 담아 일반 배열을 반환해줍ㅂ니다.
+            */
+           //참고 코드.
+           // Array.from(childNodes) // -> [<p>text 1</p>, <a>길벗</a>, <a>구글</a>] 일반배열로 반환 
+
+              Array.from(childNodes).forEach(function(node){
+
+                     if(node.nodeName === "A" ){
+
+                        //부모<body>를 기준으로  자식<a> 두쌍을 차례로 반복해서 삭제
+                         node.parentNode.removeChild(node);   
+                     }                    
+
+              });
+
+           }
+    </script>
+</head>
+<body>
+    <p>text 1</p>
+    <a href="https://www.gilbut.co.kr">길벗</a>
+    <a href="https://www.google.com">구글</a>
+</body>
+</html>

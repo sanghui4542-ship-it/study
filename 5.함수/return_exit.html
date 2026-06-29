@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            sum 함수 선언
+            기능 : 두개의 인수를 매개변수로 각각 전달 받아
+                  전달 받은 인수의 자료형이 number(숫자)의 형태이면?
+                  두 인수를 더해서 더한 결과값 하나를 반환하고
+                  전달 받은 인수의 자료형이 number(숫자)가 아니면?
+                  함수의 {}중괄호를 즉시 빠져나가게 해서 종료시키는 기능의 sum 함수 선언         
+                  
+            문제 : 두 인수를 전달 받아 두 인수가 숫자이면? 더해서 반환하는 기능의 sum함수를 만들어라라
+        */
+       function sum(num1, num2){
+            
+            //num1 num2 매개변수로 각각 전달 받은 인수 자료형이 숫자 형태가 아니냐?
+            if(typeof num1 !== "number"  ||  typeof num2 !== "number"){
+
+                return; //sum함수의 { }중괄호를 빠져 나가 함수 기능 즉시 종료
+            }
+            //num1 num2 매개변수로 각각 전달 받은 인수의 자료형이 숫자 형태이면?
+            //두 인수를 더한 결과값을 sum함수를 호출한 줄의 코드자리로 되돌려준다.(반환한다.)
+            return num1 + num2;
+       }
+
+       //------------------------------------------------------------------------------
+       //sum 함수 호출
+       //호출 할때~ 인수1 과 인수11을 각각 매개변수 자리에 순서대로 전달해서 호출 합시다.
+       let result2 = sum(1, 11);
+    // let result2 = 12;
+       console.log(result2);  //12
+
+       
+       //sum 함수 호출
+       // 호출할때~~ 인수 "a" 와 인수 "b" 를 각각 전달해서 호출합시다.
+       // "a"와 "b"는 숫자형태의 데이터가 아니기 때문에 합을 구할 수 없어 return num1 + num2;문에 의해 결과값을 반환받지 못한다.
+       let result = sum ("a","b");
+       console.log(result); //undefiend
+
+     console.log("-----------------------------------------------------------------------------------------------------");
+
+     //화살표 함수 문법으로 위 sum함수의 기능을 똑같이 만들어보기
+     const sum2 = (num1, num2) => {
+        if(typeof num1 !== "number"  ||  typeof num2 !== "number"){
+            return; //<- 함수 종료
+        }
+        return num1 + num2; //<- 함수 호출한 줄의 코드 자리로 계산된 결과값을 되돌려 준다.(값을 반환한다.)
+     };
+
+     //화살표 함수 호출
+     let result3 = sum2(2, 10);
+  // let result3 = 12;
+     console.log(result3); //12
+
+     //단일 표현식으로 작성된 화살표 함수는 중괄호{} 와 return문을 생략할수 있습니다.
+     //화살표 함수와 return문
+     //-> 화살표 함수에서 {}를 생략하면 화살표 다음에 오는 코드는 return문으로 처리된다
+     //   예를 들어, 다음 코드는 매개변수 num1, num2의 합을 즉시 반환합니다.
+     const sum3 = (num1, num2) => { return num1 + numw2; };
+     //const sum3 = (num1, num2) =>  num1 + numw2; 똑같음
+     let result4 = sum3(10, 20);
+ 
+     console.log(result4); //30
+
+
+
+
+    </script>
+</body>
+</html>

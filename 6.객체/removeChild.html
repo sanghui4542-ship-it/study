@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- script 선언문태그 :  자바스크립트 코드 작성할 영역 -->
+    <script>
+        //웹브라우저창(window객체)이 removeChild.html문서 내부에 작성된
+        //모든 HTML요소노드들을 읽어들인 상태가 되었을때
+        //load 이벤트의 처리를 할 function함수가 자동으로 실행되게 선언
+        //요약 : load 이벤트가 발생했을때 function함수가 실행되어 기능 처리 
+        window.onload = function(){
+
+            //1. <p>text 1< /p> 요소노드 선택
+            const pEl = document.querySelector("p");
+			/*
+				자식요소노드.parentNode
+				-> 선택한 자식요소노드<p>text 1< /p> 를 감싸고 있는 
+				  부모요소노드<body>< /body>를 최종 선택
+			*/
+            //2. pEl 상수메모리에 저장된 자식요소노드 <p>text 1< /p>를 삭제
+            //방법. 부모요소노드.removeChild(삭제할 자식요소노드);
+            pEl.parentNode.removeChild(pEl);
+
+        // 위 1. 2. 두줄의 코드를 아래와 같이 한줄로 작성 할수 있다.    
+        //    document.querySelector("p").parentNode.removeChild(  document.querySelector("p")  );
+
+        }
+    </script>
+</head>
+<body>
+    <p>text 1</p>
+    <a href="https://www.gilbut.co.kr">길벗</a>
+    <a href="https://www.google.com">구글</a>
+
+    
+</body>
+</html>

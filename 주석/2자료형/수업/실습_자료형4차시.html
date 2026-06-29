@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>실습 - 자료형 4차시</title>
+<style>body{font-family:sans-serif;max-width:640px;margin:40px auto;padding:0 20px;line-height:1.7}
+.g{background:#fff7e8;border:1px solid #f0d999;border-radius:10px;padding:14px 16px;color:#6b4e16}
+code{background:#eee;border-radius:4px;padding:1px 6px;font-family:monospace}</style></head><body>
+  <h1>⌨️ 실습 - 아이템 슬롯 (undefined vs null)</h1>
+  <div class="g"><b>준비:</b> 브라우저로 열고 <code>F12</code> → <b>콘솔</b> 탭을 켜두세요.</div>
+  <script>
+/*
+    주제 : undefined 와 null
+
+    - undefined : 값을 안 넣으면 자동으로 들어가는 '없음'
+    - null      : 개발자가 일부러 넣는 '비어 있음'
+    - typeof 로 자료형을 확인할 수 있음
+*/
+
+// [1] 'item' 변수를 값 없이 만드세요. (= 부분 없이)
+//     작성 공식: let 변수이름;
+let item;
+
+// [2] item 을 출력하세요. (값을 안 넣어 undefined)
+//     작성 공식: console.log(변수);
+console.log(item);  // 출력 : undefined
+
+// [3] 'weapon' 변수에 null 을 저장하세요. (슬롯을 일부러 비움)
+//     작성 공식: let 변수이름 = null;
+let weapon = null;
+
+// [4] weapon 을 출력하세요.
+console.log(weapon);      // 출력 : null
+
+// [5] item 의 자료형을 출력하세요.
+//     작성 공식: console.log(typeof 값);
+console.log(typeof item);  // 출력 undefined
+
+// [6] 'slot' 변수에 "물약"을 저장하세요. (슬롯을 채움)
+let slot = "물약";
+
+// [7] slot 과 slot 의 자료형을 함께 출력하세요.
+//     작성 공식: console.log(값, typeof 값);
+console.log( slot  ,  typeof slot ); // 출력:     물약 string
+
+// [8] 'gold' 변수에 숫자 0을 저장하세요. (0은 '없음'이 아니라 진짜 숫자)
+let gold = 0;
+
+// [9] gold 와 gold 의 자료형을 함께 출력하세요.
+console.log(gold,  typeof gold);  // 출력:  0   number
+
+  </script></body></html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            switch(비교할 값){
+
+                case 비교할 값과 같은지 판단 값1 :
+                     비교할 값과 판단 값1 이 같으면 실행할 실행문코드;
+                     break;
+
+                case 비교할 값과 같은지 판단 값2 :
+                     비교할 값과 판답 값2 이 같으면 실행할 실행문코드;
+                     break;
+
+                ......
+
+                default :
+                    위에 작된 모든 case유형의 판단 값1, 값2가 비교할 값과 같지 않으면 실행할 실행문코드;
+                    break;
+            }
+        */
+
+        switch(100){
+
+            case 1 :  
+                document.write("10과 1은 같다.");
+                break;
+
+            case 2 : // 10과 2가 같으냐? 라고 물어보는 조건 
+                document.write("10과 2는 같다.");
+                break;
+              
+            case 3, 4, 5 : // 10이  3 또는 4 또는 5와 같으냐? 라고 물어보는 조건
+                document.write("10이 3또는 4또는 5와 같다.");    
+                break;
+ 
+            case 10 :   //10과 10이 같으냐? 라고 물어보는 조건
+                //같으면? 실행될 코드 작성
+                document.write("10과 10은 같다.");
+                break;
+
+            default : // 비교할 10이  위에 작성한 모든 case유형에 적은 판단값들과 다를 경우 조건
+                document.write("모두 다르다");    
+                break;
+        }
+
+        document.write("----------------------------<br>");
+
+        /*
+            주제 : 사이트 이용자에게 즐겨 이용하는 사이트 명을 입력받아
+                  입력받은 사이트를 자동으로 재요청해서 웹브라우저 화면에 보여주는 예.
+        */
+        //순서1. prompt함수를 작성해서 즐겨 이용하는 사이트 명을 입력받아 site변수메모리에 저장
+        let site = prompt("네이버, 다음, 네이트, 구글 중 즐겨 이용하는 사이트명 하나 입력하세요");
+
+        //입력받은 사이트명에 따라 실제 http요청할 URL주소를 저장할 변수 선언
+        let url; //<- 네이버 입력받으면?  url = www.naver.com  
+                 //<- 다음   입력받은면?  url = www.daum.net
+                 //<- 네이트 입력받으면?  url = www.nate.com
+                 //<- 구글 입력받으면?    url = www.google.com
+
+        //순서2. switch 선택문을 이용하여 입력받은 사이트명에 따라~~~~~~~~
+        //      각 사이트 주소를 각각 url 변수에 따로 저장시키자
+        switch(site) { //<- 사용자로 부터 입력받은 사이트명이~~~~~
+
+             case "네이버" : //<- 위 site변수에 저장된 입력한 사이트명이! "네이버" 문자열과 같으냐?
+                  url = "www.naver.com"; //url 변수에 네이버 사이트 주소 저장
+                  break; // switch문의  { } 중에서  }닫는기호 영역 벗어나는 예약어!
+             
+             case  "다음" : //<- 위 site변수에 저장된 입력한 사이트명이! "다음" 문자열과 같으면?
+                  url = "www.daum.net";  //url 변수에 다음 사이트 주소 저장
+                  break;
+
+             case  "네이트" : //<- 위 site변수에 저장된 입력한 사이트명이! "네이트" 문자열과 같으면?
+                  url = "www.nate.com";  //url 변수에 네이트 사이트 주소 저장
+                  break;
+
+            case  "구글" : //<- 위 site변수에 저장된 입력한 사이트명이! "구글" 문자열과 같으면?
+                  url = "www.google.com";  //url 변수에 구글 사이트 주소 저장
+                  break;      
+                  
+            default :  //"네이버" ,"다음", "네이트", "구글" 이외 다른 사이트 명을 사용자가 입력했다면?
+                  //알림 메세지창 띄우기 -> alert("알림 메세지");
+                  alert("보기 중에 없는 사이트명을 입력했어요!");
+                  break;
+        }//<------------------------------------- switch 문 } 중괄호 닫기
+
+        //순서3.  조건문 if 를 활용하여 변수 url에 주소가 저장되어 있다면? 이라는 조건식 작성
+        if (url) {
+
+            //location객체  : 웹브라우저 주소창에 작성한 주소정보를 제공하는 객체
+             
+            
+		    //location객체 메모리 내부에 href변수(속성)에  재요청할 주소를 저장시키면
+		    //이코드를 실행했을때  웹브라우저 주소창에 자동으로 재요청할 주소가 적히면서 엔터를 누른 효과를 주어 재요청하게된다
+            location.href = "http://" + url;
+          //location.href = "http://www.google.com"
+
+        }
+
+
+	// if의 ()괄호 사이에 조건식을 작성할수 있는데
+	// 조건식의 결괏값이 아래와 같은 값들이 오게 되면 모두 false로 간주 합니다.
+	// 그외에 값을 결괏값이 오면 모두 true로 간주 합니다.
+	// false  ->   false
+	// 0      ->   false
+	// ""     ->   false
+	// null   ->  false
+	// undefiend -> false
+	// NaN      ->  false 
+
+    </script>
+
+
+</body>
+</html>

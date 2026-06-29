@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            논리 연산자?
+            - 피연산자를 논리적으로 평가한 뒤,
+              조건에 맞는 피연산자를 반환하는 연산을 수행하는 연산자
+            - 종류
+              ||           &&            !      
+        */
+
+        //and연산자는 &&는 피연산자를 왼쪽부터 평가해 평가결과가 거짓이 나온 피연사자를
+        //즉시 반환하고 거짓이 아니면 마지막에 평가되는 피연사자를 반환합니다.
+        document.write( true && true, "<br>"); // true
+        //왼쪽 ---------------------->
+
+        document.write( true && true && true, "<br>"); //true
+        //왼쪽 ---------------------->
+
+        /*
+        그런데 논리연산자에는 한가지 특징이 있습니다.
+        어떤 피연사자든 모두 논리형으로 평가하는 것이죠
+        숫자형을 쓰거나 문자열을 쓰ㅓ나 전부 논리값으로 평가합니다.
+
+        자바스크립트의 자료형 중 ""빈 문자열, undefiend, 0, null 만 거짓으로 평가되고
+        나머지는 참으로 평가합니다.
+        */
+
+        console.log( ""  &&  "cat" ); //"" 빈공백 문자열이 출력된다.
+        //이유 : &&연산자는 첫번째 피연산자가 false(거짓)이므로
+        //      두번째 피연산자를 평가하지 않고 첫번째 피연산자 ""를 반환합니다.
+
+        console.log( undefined && "cat" ); //undefined 가 출력된다.
+
+        console.log( 0 && "cat" ); //0 이 출력된다.
+
+        console.log( null && "cat" ); //null이 출력된다.
+
+        //--------------------------------------------------------------------------
+
+            console.log( "cat" && "dog"); //"dog"
+
+            console.log("cat" && "dog" && "bird"); //"bird"
+
+
+            console.log( false || true || false ); //true
+
+            console.log( false || false ); //false
+
+            console.log( false || "cat" ); //"cat"
+
+            console.log( "dog" || "cat" ); //"dog"
+
+        
+            console.log( !false ); // true
+
+            console.log(  !(10 < 20) );
+            //             !(true)
+            //             false
+
+            console.log( !(10 < 20 && 20 < 10) ); //true
+            
+            console.log( !true && false );
+            //           false && false -> false
+
+            console.log( !(true && false) );
+            //            !(     false    )
+            //                true
+
+    </script>
+</body>
+</html>

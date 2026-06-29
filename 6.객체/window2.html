@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--<button>버튼</button> 을 사용자가 클릭하면  printInfo(); 함수호출 -->
+    <button onclick="printInfo();">버튼</button>
+
+    <script>
+        /*
+            printInfo 함수 기능
+            -> 사이트 이용자가 버튼을 클릭하면 호출되어 실행되는 함수로
+               웹브라우저 창 하나에 대한 정보를 제공하는 기능을 가진 함수 
+        */
+        function printInfo(){
+
+            document.write(`웹 브라우저창 너비: ${window.innerWidth}`);
+            document.write(`웹 브라우저창 높이: ${window.innerHeight}`);
+            
+            document.wrtie("웹 브라우저 창 위쪽 면과 모니터 사이의 간격 : "
+                           + window.screenTop + ", " + window.screenY + "<br>");
+
+            document.wrtie("웹 브라우저 창 왼쪽 면과 모니터 사이의 간격 : "
+                           + window.screenLeft + ", " + window.screenX + "<br>");                         
+        }
+
+
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        문제 : 사이트 방문자에게 현재 몇월 달인지 입력받습니다
+              입력받은 월에 따라 각각 다른 문장을 출력하는 예
+        */
+
+    //순서1. 사이트 방문자에게 현재 몇월 달인지 입력받아 mon변수에 저장
+        let mon = prompt("현재 몇월인지 입력하세요!", "0");
+        //   6
+
+        let message; // 계절 메세지를 저장할 변수 선언
+
+       switch(true){
+            // 9   10   11
+            case (mon >= 1 && mon <= 3) : 
+            message = "한해의 시작!";  
+            break;
+           
+            case (mon >= 4 && mon <= 6): 
+            message = "벚꽃이 폈을까요?";  //클라이언트의 웹브라우저 출력(응답)
+            break;
+            
+            case 7 : 
+            message = "하하하하하";  //클라이언트의 웹브라우저 출력(응답)
+            break;
+
+            default : 
+            message = "다른 계절은 각자 생각해보시길";
+            alert("다시");
+            break;    
+        
+        }
+
+        //message변수에 저장된 계절 메세지 한번만 출력력
+document.write(message);
+
+    </script>
+</body>
+
+</html>

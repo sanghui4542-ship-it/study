@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numberA = 2;  let numberB = 2;    let numberC = '2';
+
+        //numberA 변수에 저장된 2와 numberB변수에 저장된 값이 자료종류+값 이 모두 같으냐?
+        document.write(   numberA ===  numberB  ); 
+        //                   2    ===    2
+        //                       true
+
+        document.write("<br>");
+
+        //numberB 변수에 저장된 2와 numberC변수에 저장된 '2' 가  자료종류 + 값 이 모두 같으냐?
+        document.write(   numberB  ===  numberC  );
+        //                    2    ===   '2'
+        //                       false
+        //해석 : 같은 숫자 2일지라도     numberB변수에 저장된 값은 숫자형이고
+        //                            numberC변수에 저장된 값은 '2' 문자열형 이기때문에
+        //                            같지 않으므로 false거짓을 출력 
+
+        document.write("<br>");
+
+
+        //numberB변수에 저장된 2와  numberC변수에 저장된 '2' 가 자료의 종류는 달라도 숫자값 형태만 같으냐?
+        document.write(  numberB == numberC  );
+        //                   2   ==  '2'
+        //                      true
+        //               자료의 종류는 달라도 숫자 값은 동일하므로
+        //               같으냐? 라고 비교했을때 컴퓨터는 같다 true로 인식함
+        
+
+         
+
+
+    </script>
+
+    
+</body>
+</html>

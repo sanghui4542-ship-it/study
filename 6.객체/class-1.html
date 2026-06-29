@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        ======================================================================
+        class ? 
+            - 객체메모리를 생성하는 규칙을 더 명확한 형태로 작성하는 설계도입니다.
+            - class 내부에는 생성자 함수를 안에 포함해서 만들어 놓을 수 있다.
+                         - "class = 설계도" - 
+        
+        class 생성하는 문법
+
+                        class 클래스명 {
+                        
+                            constructor(매개변수1, 매개변수2){
+                            
+                                this.속성명1 = 매개변수1;
+                                this.속성명2 = 매개변수2; 
+                            }
+                        
+                            매소드명(){
+                                실행할 코드;
+                            }
+
+
+                        }
+        ==========================================================================
+                    
+        class 설계도 하나를 이용해 객체 메모리를 만드는 문법
+
+                    let 객체참조변수명 = new 클래스명(인수1, 인수2);    
+    -->
+<script>
+        /*
+                예제 주제 : class 설계도 작성 방식으로 객체 메모리 만들기
+
+                참고. class는 같은 구조의 객체 메모리를 만들기 위해 작성해 놓은 설계도 이다.
+                     constructor는 객체 메모리가 생성될 때 자동으로 실행되는 메소드 종류 중 하나
+        */
+
+        //1. 제품 객체메모리를 만들기 위한 class 설계도 하나 만들기
+        class Product{
+
+            //(생성자)constructor 는 객체 메모리가 만들어질 때 자동으로 호출되어 실행됩니다.
+            constructor(name, price){
+                //name매개변수로 전달받은 인수값을 생성되는 객체 메모리의 name속성명과 함께 저장
+                this.name = name;   // name : "제품명"
+                this.price = price;  // price : 가격
+            }
+
+            //printInfo 메소드는 제품 정보를 화면에 출력해주는 기능을 합니다.
+            printInfo(){
+                document.write("제품명: " + this.name + "<br>"); //"제품명" 출력
+                document.write("가  격: " + this.price + "원" + "<br>"); //가격 출력
+                document.write("<hr>");
+            }
+
+        }
+
+
+        //2. product 클래스 설계도 하나를 이용해 실제 제품 객체 메모리 2개 만듭니다.
+        let Product1 = new Product("키보드", 30000); 
+        let Product2 = new Product("마우스", 15000); 
+
+        //만들어진 객체 메모리의 printInfo 메소드를 호출해서 제품 정보를 출력합니다.
+        Product1.printInfo();
+        Product2.printInfo();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

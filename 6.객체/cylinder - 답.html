@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/cylinder.css" >
+
+</head>
+<body>
+    <div id="container">
+        <div id="userInput">
+            <ul>
+                <li>
+                    <label for="radius">반지름</label>
+                    <input type="text" id="radius" value="5">
+                </li>
+                <li>
+                    <label for="height">높이</label>
+                    <input type="text" id="height" value="10">
+                </li>
+                <li>
+                    <!--사이트 이용자가 아래 <button>을 클릭하는 동작을 등록한다.   
+                        클릭동작 등록 하는 방법
+                            ->    onclick 
+                        클릭동작 등록 후  기능을 실행하기 위해 함수 호출 방법
+                            ->    onclick="함수명();"  
+                    -->
+                    <button onclick="calcByConstructor();">생성자 함수로 계산</button>
+                </li>
+                <li>
+                    <button onclick="calcByClass();">class로 계산</button>
+                </li>
+            </ul>
+        </div>
+        <div id="result">결과 출력 영역</div>
+    </div>
+
+    <script>
+        /*
+         ======== "일반 함수 calcByConstructor()" =============
+
+           <button onclick="calcByConstructor();">생성자 함수로 계산</button>을 클릭했을때 호출되어 실행 되는  일반 함수
+                기능 : 사용자  입력값 불러오기,  생상자 함수로 객체 생성, 계산된 부피를 소수 둘째자리까지 표시해서 결과영역에 출력 
+        */
+        function  calcByConstructor() {
+                /*
+                  <input type="text" id="radius" value="5">  반지름 입력한 값 얻어 변수에 저장 하기 위해
+                  아래에 만들어 놓은 function getInputValues(){....} 호출해서  
+                  radius: 반지름, height: 높이 를 {}객체로 반환 받아 input변수에 저장하게됨
+                */
+                let input = getInputValues(); //<---- {  radius:    5  ,   height: 10    }
+
+                /*  생성자 함수 를 호출해서 객체 메모리 생성  */
+                let cylinder = new  CylinderConstructor(input.radius,  input.height);
+
+                /* 계산된 부피를 소수 둘째자리까지 표시해서 결과영역에 출력 */
+                    /*<div id="result">결과 출력 영역</div> 요소를 선택해서 가져와
+                      콘텐츠 영역에 작성된 "결과 출력 영역" 대신 계산된 부피값 덮어 씌워 보여주자*/
+                document.querySelector("#result").textContent = "생성자 함수 부피 계산 결과 : " + cylinder.getVolume().toFixed(2);
+
+        }
+
+        /*
+            ========= calcByClass() 일반함수  ==========
+            <button onclick="calcByClass();">class로 계산</button> 버튼을 클릭했을때 호출당해서 실행되는 "일반함수"
+            기능 : 사용자 입력값 불러오기,  class로 객체 생성,  계산된 부피값을 소수 둘쨰자리 까지 브라우저 표시해서 보여줍니다.
+        */
+        function calcByClass() {
+                /*
+                    1. 사용자 입력값(원 반지름, 원 높이) 불러오기 
+                       방법 : 
+                                이 파일에 작성 해 놓은 function getInputValues(){ ..... } 호출해서
+                                { radius: 반지름,   height:높이 } 객체를 반환 해서 변수에 저장 
+                */
+                let input = getInputValues(); //<-  { radius: 5,   height:10 }  객체 메모리 주소 저장 
+                /*
+                    2. class 설계도를 이용해 객체 생성
+                       방법 :
+                                new 클래스명(반지름,  높이);
+                */
+                let cylinder = new CylinerClass(input.radius,  input.height);
+                //                                    5     ,        10
+                /*
+                    3. 계산된 부피값을 소수 둘쨰자리 까지 브라우저 표시해서 보여줍니다.
+                    <div id="result">결과 출력 영역</div>  ->  <div id="result">class 설계도로 계산된 부피 결과 : 부피값</div>
+                */
+                document.querySelector("#result").textContent = "class 설계도로 계산된 부피 결과 : " +  cylinder.getVolume().toFixed(2);
+
+        }
+
+
+        /*
+         ======="일반 함수  getInputValues()"=========
+
+            입력창 <input type="text" id="radius" value="5"> 에 사용자가 입력한 값을 받아오는 기능의 "일반함수"
+                기능 : 사용자로 부터 원의 반지름, 원 높이를 입력받아 객체 {....}형태로 값들을 반환(radius: 반지름, height: 높이) 하는 기능
+                참고.  calcByConstructor() { } 함수 내부에서 호출 되어 코드가 실행되는 "일반 함수"
+        */
+        function getInputValues(){
+
+            // 반지름 값(문자 → 숫자)    
+            let radius =  Number(document.querySelector("#radius").value);
+            //      5  =   <input type="text" id="radius" value="5">.value; -> "5" -> Number("5"); 숫자 변환 -> 5 
+                                                                         
+            // 높이 값(문자 → 숫자)
+            //<input type="text" id="height"  value="10"> 에 설정된 높잇값 10 얻어 변수에 저장
+            let height =  Number(document.querySelector("#height").value);
+            //                                                      "10"
+            //   10    =                                      Number("10");  
+              
+            // 객체 { } 형태로 만드는데 ... 반지름, 높이 저장후 객체 {  } 메모리 반환
+            return  {  radius: radius,   height:height };
+           //       {  radius:    5  ,   height: 10    }; 
+
+        }
+        /*
+            참고.  <input type="text" id="radius" value="5"> 에 입력된 반지름값 얻어 저장 하는 코드 작성 방법
+
+                    순서1. 먼저 <input>태그 선택해서 가져오기  
+                        document.querySelector("css선택자문법")
+
+                    순서2. 선택한 <input>태그에 value="5" 중에서 "5"를 얻는다. 
+                        document.querySelector("css선택자문법").value;
+        */       
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------
+
+        //======== "생성자 함수 CylinderConstructor(radius, height)로 객체 메모리생성" ================
+        function CylinderConstructor(radius, height){
+
+            this.radius = radius; //입력받은 반지름을 객체 메모리의 속성명 :    해서 값으로 저장 
+            this.height = height; //입력받은 높이를   객체 메모리의 속성명 :    해서 값으로 저장 
+
+            //부피를 계산해주는 메소드를 객체 메모리에 추가하자 
+            this.getVolume = function(){
+
+                 /*    참고. 원기둥 부피 구하는 공식  ->   반지름 * 반지름 * 원주율 * 높이        */
+                //원기둥 부피 계산해서 반환
+                //      반지름      *       반지름 * 원주율    * 높이
+                return this.radius * this.radius * 3.141592 * this.height;
+
+            };
+
+        }
+
+        /*
+            =============== "class 설계도 정의해서 사용 (JS 최신 문법의 객체 생성 설계도)"====================
+        */
+        class   CylinerClass {
+
+                //생성자 : new 로 객체 메모리 생성시 -> new  클래스명(5, 10); 호출되는 메소드의 종류중 하나  
+                constructor(radius, height){
+                    
+                    this.radius = radius; //입력받은 반지름을 객체의 속성명과 함께 값으로 저장   radius : 5
+                    this.height = height; //입력받은 높이를  객체의 속성명과 함께 값으로 저장    height : 10
+                }
+
+                //메소드  : 원기둥 부피 계산해서 결과값 반환 하는 기능 
+                getVolume(){
+
+                    //      원기둥 부피 계산 적용 하여 원기둥 부피 계산값 반환
+                    return  this.radius  * this.radius * 3.141592 * this.height;
+
+                }
+        }
+
+    </script>
+
+            <!--
+
+            [1] 작성 문법 - 생성자 함수 작성
+
+            function 생성자함수명(매개변수1, 매개변수2){
+
+                this.속성명1 = 매개변수1;
+                this.속성명2 = 매개변수2;
+
+                this.메소드명 = function(){
+                    실행할 코드
+                };
+            }
+
+            let 객체참조변수 = new 생성자함수명(값1, 값2);
+            ----------------------------------------------------------
+            [2] 작성 문법 - class 작성
+
+            class 클래스명 {
+
+                constructor(매개변수1, 매개변수2){
+                    this.속성명1 = 매개변수1;
+                    this.속성명2 = 매개변수2;
+                }
+
+                메소드명(){
+                    실행할 코드
+                }
+            }
+
+            let 객체참조변수 = new 클래스명(값1, 값2);
+            ---------------------------------------------------------
+
+            [3] 작성 문법 - 계산 기능을 메소드로 작성
+
+            class Cylinder {
+
+                constructor(radius, height){
+                    this.radius = radius;
+                    this.height = height;
+                }
+
+                getVolume(){
+                    return this.radius * this.radius * Math.PI * this.height;
+                }
+            }
+            ============================================================
+            --> 
+</body>
+</html>

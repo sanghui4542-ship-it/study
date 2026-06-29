@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            Number 객체 : 숫자를 보관해서 숫자표기법을 변경하는 메소드를 제공하는 내장객체          
+            
+            Number 객체 메모리 생성 방법
+                -> 숫자를 변수에 저장시키면 됩니다.
+                    예) let num = 3.456;
+        */
+       let num1 = 3.456789;
+
+       let num3 = "30.5px";
+
+       let num4 = 40;
+
+       /*
+            num1 변수에 저장된 값 3.456789를 전달한 고정 소수점 자리만큼만 반올림하여 표기 합니다.
+            소수점 둘째자리까지 반올림되어 다음과 같이 표기 됩니다.
+            3.456789 에서 소수점 셋째자리에서 반올림하여 3.46으로 만들어 반환
+       */
+        document.write( num1.toFixed(2), "<br>" );
+        //                 3.46
+
+       //num1 변수의 Number객체 메모리 내부의 3.456789 숫자를 문자열 "3.456789"로 변환해서 반환 받아 사용
+       document.write( num1.toString(), "<br>" ); // "3.456789" 출력
+       //                  3.456789
+
+       //num4 변수의 Number객체 메모리에 저장된 40을 반환 받아 사용
+       document.write( num4.valueOf(), "<br>" ); // 40
+        //                 40
+
+        //----------------------------------------------------------------------------------------------
+        /*
+            let num3 = "30.5px";
+            let num4 = 40;
+        */
+        //num3변수에 저장된 "30.5px"문자열에서 실수만 추출해서 30.5를 반환
+
+        document.write( parseFloat(num3)   +   num4.valueOf(), "<br>" );
+        //                  30.5           +        40
+        //                               70.5
+
+        /*
+            참고. parseFlot는 Number객체 메모리 내부에 만들어져 있는 메소드
+                 parseFlot 함수이다. 함수를 호출해서 사용한 것이다.         
+        */
+       //num3 변수에 저장된 "30.5px" 문자열에서 정수30숫자만 추출해서 반환
+        document.write( parseInt(num3) , "<br>" );
+        //                    30
+
+        //num3 변수에 저장된 "30.5px" 문자열을 parseInt 함수를 호출할 때 매개변수로 전달하면
+        //정수 30숫자로 추출해서 반환하고, num4변수에 저장된 40과 더해보자
+        //최종 70이 출력되는지 살펴보자.
+        document.write( parseInt(num3) + num4.valueOf(), "<br>" );
+        //                    30       +      40
+        //                            70
+
+        
+
+
+
+    </script>
+</body>
+</html>

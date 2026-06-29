@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .red-color   { color:red; }
+        .red-color2  { background-color: black;}
+    </style>
+
+</head>
+<body>
+    <!--
+    메소드로 속성 조작
+    ───────────────────────────────────────────────────────────────────────────────────────
+    메소드                                    설명
+    ───────────────────────────────────────────────────────────────────────────────────────
+    노드.getAttribute("속성명");               해당 속성의 값을 반환
+    노드.setAttribute("속성명", 값);           해당 속성 값 변경/추가
+    노드.removeAttribute("속성명");            해당 속성 삭제
+    -->
+
+    <a href="http://www.naver.com" data-link="네이버">네이버</a>
+
+    <script>
+    /* 
+    	getAttribute메소드와 setAttribute메소드는 모든 속성의 상위 메소드라서 
+        classList속성이나 dataset속성으로 하는 조작을 모두 할수 있습니다
+
+        보충. getAttribute메소드와 setAttribute메소드는 HTML의 속성을 속성명이름으로 직접 읽고 변경할수 있는
+             범용 메소드 들입니다.
+  	*/     
+       const aEl  = document.querySelector("a");
+
+        aEl.setAttribute("data-link", "네이버2"); //"네이버"   변경 ->  "네이버2"
+        aEl.setAttribute("class","red-color");   //class="red-color" 추가 
+    /*
+    위 두줄에 의해 변경된 a요소노드 
+
+        <a href="http://www.naver.com" data-link="네이버2"  class="red-color">네이버</a>
+   */
+   /*
+    하지만 실무에서는 class속성의 값을 조작할때는 보통 classList속성에 포함된 add메소드를 더 많이 씁니다.
+
+         <a href="http://www.naver.com" data-link="네이버2"  class="red-color red-color2">네이버</a>
+   */
+        aEl.classList.add("red-color2");
+    /*
+    하지만 실무에서는 data-* 속성 조작은 보통 dataset속성을 많이 사용합니다.
+
+        <a href="http://www.naver.com" data-link="네이버3"  class="red-color red-color2">네이버</a>
+    */
+        aEl.dataset.link = "네이버3";
+
+
+    /*
+        정리 - 같은 작업을 3가지 방식으로 비교 
+
+            1. setAttribute 메소드 방식
+
+                aEl.setAttribute("class","red-color");
+                aEl.setAttribute("data-link", "네이버2");
+
+            2. classList + dataset 방식
+
+                aEl.classList.add("red-color");
+                aEl.dataset.link = "네이버2";
+            
+            3. 최종 HTML 결과
+                둘다 결과는 비슷합니다.
+
+                    <a href="http://www.naver.com" data-link="네이버2" class="red-color">네이버</a>
+
+
+    */
+
+
+
+
+
+    </script>
+
+</body>
+</html>

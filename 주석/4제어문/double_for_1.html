@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //구구단 2단 부터 9단까지 결과를 반복문을 이용해서 화면에 출력하는 예제입니다.
+
+        //바깥쪽 for문 : 2단부터 ~ 9단까지 차례대로 반복 진행합니다.
+        for(let i = 2;   i <= 9;   i++){ // i변수는 현재 몇 단인지 의미 (2단 ~ 9단)
+
+             //현재 몇 단인지 크게 표시 합니다.
+             document.write("<h1>" + i + "단</h1>");  
+             
+             //아래 예시처럼 동작합니다:
+             //바깥for의  i = 2,  안쪽 for의 k = 1  ->  "2  X  1 = 2"  출력
+             //바깥for의  i = 2,  안쪽 for의 k = 2  ->  "2  X  2 = 4"  출력
+             //바깥for의  i = 2,  안쪽 for의 k = 3  ->  "2  X  3 = 6"  출력
+             //....
+             //바깥for의  i = 2,  안쪽 for의 k = 9  ->  "2  X  9 = 18"  출력
+
+             //안쪽 for문 : 각 단마다 곱하는 수(1~9)만큼 차례로 반복합니다.
+             for(let k = 1;   k <= 9;   k++){ //k변수에 저장되는 값들은  곱하는 숫자들 (1부터 9까지)
+
+                //예시 : 2 X 1 = 2,   2  X  2 = 4, .... 이런식으로 한 줄씩 출력 
+                document.write( i + " X " + k + " = " + (i * k)  + "<br>");
+
+             } //--> 안쪽 for문 닫기  
+
+        } //--> 바깥쪽 for문 닫기 
+
+		// 설명:
+		// 바깥쪽 for문이 한 번 반복할 때마다 (즉, 하나의 단마다)
+		// 안쪽 for문이 9번(곱하는 수 1~9까지) 실행됩니다.
+		// 그래서 총 8(2~9단) x 9 = 72줄이 출력됩니다.
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><title>자료형 실습</title>
+<style>body{font-family:sans-serif;max-width:600px;margin:40px auto;padding:0 20px;line-height:1.8;font-size:16px}button{padding:8px 16px;font-size:15px;cursor:pointer;margin:4px}input{padding:8px;font-size:15px;width:250px}#out{margin-top:16px;padding:12px;background:#eef1fb;border-radius:8px;min-height:24px}</style>
+</head>
+<body>
+<h3>출력 결과는 F12 → Console 탭에서 확인하세요. 주석 설명을 보며 직접 코드를 작성하세요.</h3>
+<script>
+/*
+    주제 : 불린과 비교 연산
+
+    - 불린 : true(참) / false(거짓) 두 값뿐
+    - 비교 연산자로 두 값을 비교하면 결과가 불린으로 나옴
+        · >  크다   · <  작다   · >= 크거나 같다  · <= 작거나 같다
+        · === 같다  · !== 다르다
+    - 비교에는 === (등호 3개)를 씁니다 (= 하나는 '대입'이라 다름)
+*/
+
+// [1] 'hp' 변수에 80을 저장하세요.
+//     작성 공식: let 변수이름 = 값;
+let hp = 80;
+
+// [2] hp 가 0보다 큰지 비교해 출력하세요.
+//     작성 공식: console.log(값1 > 값2);
+console.log( hp  >  0 ); //--------------------------->  true 참이다!(맞다! 그래 80이 더크다)
+//           80  >  0
+// 해석 :     80이  0보다  더 크냐 > 라고 컴퓨터에게 묻는 식
+//            컴퓨터는  80 > 0 식을 보고 80이 더큼을 판단해서 우리개발자에게 맞다 참이다 true 단어를 되돌려줌
+
+
+// [3] hp 가 100보다 큰지 비교해 출력하세요.
+console.log(  hp > 100 ); //----------------------->  거짓이다 의미의 false가 출력
+//            80 > 100  
+//해석         80이  뒤에 작성한 100보다 더 크냐? 라고 컴퓨터에게 물어보는 식
+//             컴퓨터는 80 > 100 식을 판단해서  80이 더 크지 않으면?  거짓이다 false 단어를 되돌려줌
+
+
+// [4] hp 가 80과 같은지 비교해 출력하세요. (등호 3개 ===)
+//     작성 공식: console.log(값1 === 값2);
+console.log( hp === 80 );//-----------------------------> 같다를 의미하는 true 출력
+//           80 === 80
+//해석 :     앞에 작성한 80 이 뒤에 작성한 80과 같으냐?(===) 라고 컴퓨터에게 묻는 식을 컴퓨터에게 전달하면?
+//          컴퓨터는 80 === 80 식을 판단해서 같음을 의미하는 true 단어를 되돌려 줌 
+
+
+// [5] hp 가 50과 다른지 비교해 출력하세요. (!==)
+console.log( hp !== 50);
+//           80 !== 50   -> true
+
+// [6] 'level' 에 5, 'requiredLevel' 에 10을 저장하세요.
+let level = 5;
+let requiredLevel = 10;
+
+// [7] level 이 requiredLevel 이상인지 비교해 출력하세요. (>=)
+console.log( level >= requiredLevel ); 
+//             5   >=    10
+//               false
+//해석 :      앞에 작성한 5 숫자가  뒤에 작성한 10이라는 숫자보다 크거나 같으냐(이상이냐?)라고 컴퓨터에게 묻는식을 작성했을때
+//            컴퓨터는 우리 개발자에게 거짓이다라는 의미의 false 단어를 되돌려 준다.
+
+
+// [8] 'isAlive' 변수에 hp 가 0보다 큰 결과(불린)를 저장하세요.
+//     작성 공식: let 변수 = 비교식;
+   let isAlive =  hp  >  0;
+// let isAlive =  80  >  0;
+// let isAlive =    true;
+//해석 :           80 숫자가  0 숫자보다 더 크냐 >  라고 컴퓨터에게 물었을때
+//                컴퓨터는 식을 해석해서 개발자에게  80이 더 크기 때문에 true 라는 참의 의미의 값을 되돌려줌  
+
+// [9] isAlive 를 출력하세요.
+   console.log(isAlive); //true
+
+// [10] isAlive 의 자료형을 출력하세요. (불린이므로 boolean)
+   console.log(typeof  isAlive);
+   //          typeof   true
+  //               boolean 
+
+
+</script>
+</body>
+</html>

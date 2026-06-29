@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+           
+                // getElement.html 문서 <- document 문서노드 객체
+                //                                 |
+                //     <!DOCTYPE html>  노드 객체        <html lang="en"> 요소노드 객체
+                //                                                       |    
+                //                                             <head>        <body>       
+                //                                               |
+                //                                        <meta>    <title>    
+                    
+
+                // 1.  document 문서노드 객체 안에 작성된  <!DOCTYPE html> 첫번째 자식요소는 객체 선택해서 가져옴
+                //     그리고 console.log로 출력        
+                 console.log( document.firstChild    );
+
+                 //2.  document 객체 아래에 작성된 DO 중에서 첫번째로 작성된 <html>요소노드를 선택해서 반환
+                 console.log( document.firstElementChild  );
+                            //<html lang="en"></html>
+
+                 //1.document.childNodes속성을 호출하면
+                 //getElement.html웹문서 내부에 작성된 모든 첫 자식 노드들을
+                 //새로운 NodeList배열에 담아  NodeList배열 자체를 반환 합니다.
+	             //["<DOCTYPE html>", "<html>...</html>"]
+	             //    0                  1               index	
+
+                //2.  .firstElementChild속성을 호출하면
+                //  <html></html> 내부에 작성된 첫번째로 작성된 자식요소노드인 
+                //  <head></head>자식요소노드를 반환(선택해서 가져옴)
+
+                //3. .firstElementChild속성을 다시한번더 호출하면
+                //   <head></head> 내부에 작성된 첫번째 <meta charset="UTF-8"> 자식 요소노드 선택
+
+                //4. .nextElementSibling 속성을 호출하면
+                // <meta chatset=utf-8> 다음에 작성한 다음요소노드인?
+                // <title>Document</title>요소노드 최종 선택
+
+                            //1. <html>...</html> 
+                            //2. <head>...</head>
+                            //3. <meta chrset=utf-8>
+                            //4. <title>Document</title>
+                 console.log( document.childNodes[1]
+                                      .firstElementChild
+                                      .firstElementChild
+                                      .nextElementSibling ); 
+
+        /*
+                결론 : Document Object Model (HTML 문서를 브라우저가 해석하여 만든 객체 모델입니다.)
+                                            (HTML 문서가 트리구조로 모델 )
+        
+        
+        
+        */
+
+
+
+
+
+        </script>
+        
+    </body>
+</html>

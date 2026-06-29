@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            location객체에서 제공하는 href속성
+            - href속성명만 호출하면  웹브라우저 주소창에 사이트 이용자가 입력했던 
+              전체 요청 주소(URL) 을 얻을수 있다.
+        */
+        document.write(     location.href      );
+        /*
+            location객체의 href="재요청할URL";
+            - href속성명에 재요청할 주소를 저장시키면  그 주소가 브라우저 창에 자동적히면서 엔터까지 눌러 재요청하게 된다. 
+            - 문법
+                    location.href = "재요청할 URL";
+        */
+        // 3초 쉬었다가 한번만! function(){}을 실행하게 해서 네이버 사이트 재요청!
+        window.setTimeout(function(){
+
+            document.write("3초가 지나면...naver사이트를 재요청하게 됩니다.");
+            location.href = "http://www.naver.com";
+
+        },3000);
+
+
+        /*
+            location객체에서 제공하는 reload()메소드 
+            - 현재 클라이언트가 보고 있는 화면(location.html)을 재요청하기 위해 
+              자동으로 웹브라우저 주소창에 현재 보고 있는 화면의 URL주소가 자동으로 입력되어 자동 재요청하게 하는 기능의 메소드 
+              요약 : F5 자동으로 눌러지고 새로고침 되는 것이다.
+        */
+        // location.reload();
+
+
+
+
+    </script>
+
+    
+</body>
+</html>

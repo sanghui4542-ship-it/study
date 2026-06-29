@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*
+    문제 2: 계절 판별기
+
+    사용자에게 월을 입력받아 해당 월의 계절을 출력하는 프로그램을 작성하세요.(switch문 활용)
+
+    3~5: "봄"       <-출력
+    6~8: "여름"      <-출력
+    9~11: "가을"     <-출력
+    12, 1, 2: "겨울" <-출력  
+*/	
+        //순서1. prompt함수로 현재월을 입력받아 얻습니다.   입력값 -> 7  , 얻는값 -> "7"
+        //순서2. parseInt함수를 호출할때 첫번째 자리에 "7"을 전달하고 두번째자리에 변환할 10진수 값 10전달
+        //순서3. parseInt함수가 우리개발자에게 문자열 "7"을  10진수 숫자 7로 변경해서 되돌려줌으로써 month변수에 저장 
+        let month =   parseInt(   prompt("현재 월을 입력하세요:","0"), 10    );
+        //        =   parseInt(    "7"                             , 10   );   ->    7   
+        //  7
+
+        console.log(month);
+
+/*
+    3~5: "봄"       <-출력
+    6~8: "여름"      <-출력
+    9~11: "가을"     <-출력
+    12, 1, 2: "겨울" <-출력  
+ */
+      switch (month) {
+
+            //month변수에 저장된 입력한 달이 3 또는 4또는 5와 같으냐?
+            case 3: case 4: case 5: //3 ~ 5월 이면?   
+                document.write("봄");
+                break;
+
+            //month변수에 저장된 입력한 달이  6 또는 7또는 8과 같으냐?
+            case 6: case 7: case 8: //6 ~ 8월 이면?
+                document.write("여름");   
+                break;
+
+            //month변수에 저장된 입력한 달이  9 또는 10또는 11과 같으냐?
+            case 9: case 10: case 11: //9 ~ 11월 이면?
+                document.write("가을");   
+                break;   
+              
+            case 12: case 1:  case 2:
+                document.write("겨울");
+                break;    
+                
+            default:
+                document.write("잘못된 데이터 입력했습니다.");
+                break;
+        }
+                    
+
+
+
+
+    </script>
+    
+</body>
+</html>

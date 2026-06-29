@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        문제 4 : 간단한 계산기
+        
+        사용자에게 두 숫자와 연산자 ( +  -  *  / ) 기호 중 하나를 입력받아 연산결과를 출력하는 프로그램을 작성하세요.
+        
+        */
+
+        //사용자에게 첫 번째 숫자를 입력받아 변수 num1에 저장하세요.
+        let num1 = parseFloat( prompt("첫번째 숫자를 입력하세요.", "0"), );
+        //          parseFloat( "10"                                  ); -> 10.0    
+        //  10.0
+        console.log("num1 ->" , num1);
+
+        //사용자에게 연산자( +  -  *  / ) 기호 중 하나를 입력받아 변수 operator 에 저장하세요
+        let operator = prompt("연산자 기호 중 하나를 입력하세요(+ - * / 중 하나)" + "+");
+        console.log("operator->" ,operator);
+
+        //사용자에게 두 번째 숫자를 입력받아 변수 num2에 저장하세요.
+        let input = prompt("두번째 숫자를 입력하세요","0"); //2입력 하면 "2"로 받습니다. 
+        // "2"
+        let num2 = parseFloat(input);
+        // 2.0 =                2
+        console.log("num2->" ,num2);
+
+        //연산 결과를 저장할 변수 result를 선언하세요
+        let result;
+
+        /*
+            switch 선택문을 사용하여 operator의 값에 따라 num1과 num2의 연산 결과를 result변수에 저장하세요
+            덧셈 +   뺄셈 -   곱셈 *   나눗셈 /  을 처리하고, 
+            나눗셈의 경우 num2가 0일 때는 오류 메세지를 출력하세요.
+            아래에 주석 구문 및에 코드를 작성하세요.
+
+        */
+        //  "+"또는 "-"또는 "*"또는 "/" 중 하나의 값 operator 를 key 자리에 작성
+        switch (operator) {
+            
+
+            // operator 변수의 값이 "+"와 같을 경우      
+            case "+":
+                
+                // num1과 num2를 더한 값을 result에 저장
+                result = num1 + num2;
+
+                //switch문 종료   
+                break;
+
+                //operator 변수의 값이 "-"와 같을 경우
+                case "-" : //operator 변수의 값이 "-"와 같을 경우
+                result = num1 - num2; // num1에서 num2를 곱한 값을 result에 저장
+                break; //swtch 문 종료
+            
+                case "/" : //operator 변수의 값이 "/"와 같을 경우
+
+                    //if else 조건문 사용 -> num2가 0이 아닐 경우와 0일 경우를 각가 나눠                
+                    //                     0이 아닐 경우에는 num1을 num2
+                    //
+            default:
+                break;
+        }
+
+
+
+    </script>
+</body>
+
+</html>

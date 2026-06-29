@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+            let num = 2.1234;
+
+            /*
+            
+                Math 객체 : 수학 연산관련 속성과 메소드들을 제공하는 객체
+
+                Math 객체 생성 방법
+                        - 따로 new 하지 않고 Math객체명만 작성
+
+                Math 객체 내부에 만들어져 있는 속성과 메소드 호출 방법
+                        Math.메소드명(); <- 호출해서 사용
+                        Math.속성명;     <- 속성명을 사용하면 값을 얻어 사용
+ 
+            */
+           //1. Math객체의 PI상수를 호출하면 3.14159226535....을 반환 받아 사용할 수 있다.
+           let piNum = Math.PI;
+           // 3.141592 = 
+           document.write(piNum, "<br>");
+
+            //2. Math객체의 random()메소드를 호출하면
+            // 0.0 ~ 0.9 사이 중 실수값 중에서 랜덤값(난수) 하나만 추출해서 반환해 줍니다.
+            let rndNum = Math.random();
+            document.write(rndNum, "<br>");
+
+            //3. Math객체의 ceil(2.1234)메소드를 호출하면
+            //   소수점 첫자리의 값 1을 무조건 올림처리하여 정수 3으로 만들어 반환 해 줍니다.
+            let ceilNum = Math.ceil(num);
+            document.write(ceilNum, "<br>");
+
+            //4. Math객체의 round(2.1234)메소드
+            //   값 2.1234에서 소수점 첫자리의 값 1을 반올림처리하여 정수 2로 만들어 반환 해줍니다.
+            let roundNum = Math.round(num);
+            document.write(roundNum, "<br>");
+
+            //5. Math객체의 floor(2.1234)메소드를 호출하면
+            //   값 2.1234에서 소수점 자리의 값들을 모두 제거(절사)하여 정수 2로 만들어 반환 해줍니다.
+            let FloorNum = Math.floor(num);
+            document.write(FloorNum, "<br>");
+
+            //---- 그렇게 중요하지는 않지만 알아두면 좋은 메소드 -----
+            
+            //6. Math객체의 max(10, 5, 8, 30, .... ) 메소드를 호출하면
+            //   전달한 인수들 중에서 가장 큰 최댓값 30 하나만 반환해 줍니다.
+            let maxNum = Math.max(10, 5, 8, 30); //30
+            document.write(maxNum, "<br>");
+
+            //7. Math객체의 min(10, 5, 8, 30, .... ) 메소드를 호출하면
+            //   전달한 인수들 중에서 가장 큰 최솟값 5 하나만 반환해 줍니다.
+            let minNum = Math.min(10, 5, 8, 30); //5
+            document.write(minNum, "<br>");
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+</html>

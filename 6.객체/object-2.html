@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        ====================================================================
+        객체 메모리 주소번지 대입과 참조(사용) 주의
+        
+        - 객체 메모리의 주소번지를 다른 참조변수에 대입해서 저장하면
+          같은 객체메모리에 접근해서 사용할 수 있습니다.
+    
+        - 다른 참조변수로 속성명의 값을 변경하면 또다른 참조변수로 객체메모리에 접근했을때
+          속성명에 대한 값을 똑같이 사용할 수 있습니다.
+
+          예)
+                                0X12
+                let num1 = { 속성명 : 값 }  
+                    0X12
+    
+                let num2 = num1;
+                    0X12 = 0X12;
+    -->
+    <script>
+            /*
+                주제6. 객체 메모리 내부에 메소드 만들기
+                    
+                    - 함수 이름에 해당하는 메소드 이름 먼저 지정한 후 function예약어로 메소드를 만듭니다.
+
+                    - 작성 방법
+                                메소드명 : function(){
+                                    
+                                    기능 코드로 작성;
+                                
+                                }
+            */
+           let book3 = {  
+                            //속성 -> 속성명 : 값
+                            title : "점프투 파이썬",
+                            page  : 360,
+
+                            //메소드 -> 기능 ,행동, 동작
+                            buy   : function(){
+                                console.log("이 책을 구입했습니다.");
+                            }
+                            /*
+                                JS버전 업데이트가 되어 메소드를 정의할때 function이라는 예약어를 작성하지 않고도
+                                아래와 같은 형태로 작성해서 만들어 놓을 수 있다.
+
+                                buy(){
+                                    console.log("이 책을 구입했습니다.");
+                                }
+                                                      
+                            */
+                        };
+
+            //book3 객체 메모리 모습을 문자열 형태로 출력
+            console.log( JSON.stringify ( book3 )); //{"title":"점프투 파이썬","page":360} 출력력
+
+
+            /*
+               주제7. 만들어 놓은 book3객체메모리의 메소드 호출해서 기능을 사용할 수 있다.             
+                       
+                        작성방법
+                                객체참조변수명.메소드명();
+            */
+            book3.buy(); //이 책을 구입했습니다.
+            /*
+               주제8. 객체 메모리 내부에 만들어진 메소드를 호출하여 사용할때 this 예약어에 대해
+            */
+           let book4 = {
+                        title : "Javascript",
+                        pages : 500,
+                        author: "김말똥",
+                        done  : false, //true -> 완독,  false -> 읽는중중
+
+                        finish: function(){ //<---- 읽는 중인지? 또는 완독했는지 알려주는 기능
+                            
+                            //삼항조건 연산자 식 사용하자
+                            //    조건식         ?   조건식참인경우사용값   : 조건식거짓인경우사용값;
+                            this.done === false ?  console.log("읽는중") : console.log("완독");
+
+
+                         }
+
+                        };
+    //-------------------------------------------------------------------------------------------
+    //book4 참조변수에 저장된 Javascript 책 객체 내부에 만들어져 있는 finish 메소드 호출해서 읽는 중인지 완독했는지 알아내자
+    book4.finish();
+
+        /*
+           주제9. 객체 메모리 주소번지 복사
+        */
+       //1. 원시 유형의 값( 숫자, true ) 복사
+       let number1 = 100;
+       //  | 100 | = 
+       let number2      = number1;
+       // | undefined | =  100;
+       // | 100       |                  
+       //             100                100
+        console.log(number1); console.log(number2);
+
+            number2 = 200;
+        //  | 200 | = 200;
+        //  | 200 | <-------------최종 저장
+        
+        console.log(number1); //100
+        console.log(number2); //200
+        /*
+           결론. 숫자 같은 원시형 자료는 변수의 값을 전달합니다.
+                number1변수메모리에 값을 할당한 후
+                다시 number1변수메모리에 저장된 100을 number2변수에 할당하면
+                number1변수에 저장된 100값이 number2변수에 똑같이 복사되어 할당됩니다.
+        
+        */
+        //2. 객체메모리의 참조값(주소번지 0X16)을 다른 참조변수에 대입
+        let bag1 = { color : "blue" , whith : 30, height : 50 } //<----------- 객체메모리 주소번지 0X16
+    //     |0X16|=
+
+        let bag2        =  bag1;
+    //    |undefinend|  =  0X16;
+    //    |   0X16   |
+    console.log( JSON.stringify(bag1) ); //{"color":"blue","whith":30,"height":50}
+    console.log( JSON.stringify(bag2) ); //{"color":"blue","whith":30,"height":50}
+
+    bag2.color = "red"; //{"color":"red","whith":30,"height":50}                    
+    console.log( JSON.stringify(bag1) ); //{"color":"red","whith":30,"height":50}
+    console.log( JSON.stringify(bag2) ); //{"color":"red","whith":30,"height":50}
+                                             
+    //결론 : 객체 메모리의 참조값(주소번지)를 다른 참조변수에 대입해서 복사할 경우에는
+    //      일반 원시형 값을 복사하는 것이 아니라
+    //      처음 한번 생성된 객체메모리의 참조값(주소번지)를 복사 한다는 의미.
+
+                        /*
+                        {
+                            속성,
+
+                            생성자함수 가 생략된 것임
+
+                            메소드
+
+                        }
+                        */
+
+
+
+    </script>
+</body>
+
+</html>

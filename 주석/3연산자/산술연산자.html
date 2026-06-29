@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+		//주제 : 산술연산자 중에서  나누기 연산자 /  , 나머지값 구하는 연산자  %  비교해 보기
+		
+		let numberOne = 15   /   2;  //numberOne변수에 저장되는 값은 7.5
+
+        //document.write(변수명 또는 값);  <- <body> 사이에 보내어서 브라우저에 출력력
+		document.write(numberOne, "<br>");
+	     //결론 : 15를 2로 나누면 7.5가 나옵니다.
+	    //       정수 15를 정수 2로 나누었을때 소수점이하의 값이 발생합니다.
+	    //        따라서 , 15를 2로 나누면 7.5가 나오는것은 정수와 정수의 나눗셈결과가
+	    //        소수점 이하를 포함할수 있기때문입니다.
+
+        //15를 2로 나누었을때 나머지값 구해 %  let numberTwo변수에 저장
+		let numberTwo = 15 % 2; //나머지값 1
+		document.write(numberTwo, "<br>");
+
+        document.write("--------------------------------<br>");
+	
+        //numberA변수를 선언하는 동시에 1을 저장
+        let numberA = 1;
+        //numberB변수를 선언하는 동시에 2를 저장
+        let numberB = 2;
+
+        //numberA변수에 저장된 값과 numberB변수에 저장된 값의 합을  출력 한 후 한줄 줄바꿈 출력
+        document.write(  numberA   +  numberB , "<br>" );  // 3 <br>
+
+        //numberA변수에 저장된 값에서 numberB변수에 저장된 값을 뺀 후 결과값 출력 한 후 한줄 줄바꿈 출력
+        document.write( numberA - numberB , "<br>" );
+        //                  1   -   2     , "<br>"
+        //                     -1         , "<br>"
+
+        //numberA변수에 저장된 값에서 numberB변수에 저장된 값을 곱한 결과값 출력 한 후 한줄 줄바꿈 출력
+        document.write(  numberA * numberB, "<br>");
+        //                  1    *    2   , "<br>"
+        //                       2        , "<br>"
+
+        //numberA변수에 저장된 값을 numberB변수에 저장된 값으로 나눈 나머지값을 출력 한 후 한줄 줄바꿈 출력
+        document.write(  numberA % numberB, "<br>");
+        //                    1  %    2   , "<br>"
+        //                      1         , "<br>"
+
+        //numberA변수에 저장된 값을 numberB변수에 저장된 값으로 나눈 몫을 구해 출력 후 한줄 줄바꿈 출력
+        document.write( numberA / numberB, "<br>" );
+        //                  1   /  2     ,  "<br>"   
+        //                 정수 /  정수   ,   "<br>"
+        //                   0.5         ,   "<br>"
+
+        document.write("--------------------------------<br>");
+
+ 		//만일 연산자가 동등한 우선순위를 가질떄는 왼쪽에서 오른쪽으로 차례대로 계산함
+	    //그런데 ...   곱셈 또는 나눗셈이  덧셈그리고 뺼셈과 같은 연산식에 있을때
+	    //             곱셈 또는 나눗셈을 먼저 계산하고 그 후 덧셈 또는 뺄셈을 계산합니다       
+        let result4 =  1   +  2  * 10;
+        //순서1. 2 * 10 을 먼저 계산 합니다. 그래서 20으로 만들어 줍니다.
+        //순서2. 앞에 작성된 1과 20을  + 더합니다.  연산결과 21을 만들어서 result4변수 메모리에 저장
+        document.write(result4, "<br>"); // 21<br>
+
+        let result5 = (1  +   2)   *  10;
+        //순서1. (1  +  2) 부터 먼저 계산해 3을 만든 후 
+        //순서2.  3  *   10 을 계산해서 최종을 30을 만들어  result5변수 메모리에 저장
+        document.write(result5);
+        document.write("<br>");
+
+	</script>
+</head>
+<body>
+
+
+
+
+</body>
+</html>

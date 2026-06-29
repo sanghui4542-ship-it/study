@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            주제1. 사용자 정의 객체 만들기
+
+            객체 생성(만들기) 방법2. 리터럴 {} 이용
+
+                let 참조변수명 = { 속성명:값, 메소드명:function(){코드;} }
+        */
+            let book1 = { title : "웹 표준의 정석", pages:648 }
+            //            속성명:"문자열값",        속성명:숫자값
+
+        /*
+            주제2. 객체의 "속성명:값" 한 값을 얻거나나
+        
+                방법1.  . 표기법 이용
+
+                방법2. [] 표기법 이용
+        
+        
+            let book1 = { title : "웹 표준의 정석", pages:648 }
+        */
+       //방법1. (.)점표기법 이용
+       //       객체참조변수명.속성명 -> 객체 { } 내부에 만들어진 "속성명:값" 중에서 "값" 얻는 문법
+                console.log(book1.title);  //"웹 표준의 정석"
+      //방법1   (.)점표기법 이용
+      //        객체참조변수명.속성명 = 변경할값; -> 객체 { } 내부에 "속성명:값" 중에서 "값" 변경 문법
+                       book1.title = "웹 표준의 정석2";
+        console.log( JSON.stringify( book1 ) ); // '{"title":"웹 표준의 정석2","pages":648}'
+        console.log(  book1  );/*{title: '웹 표준의 정석2', pages: 648}
+                                 pages : 648 title : "웹 표준의 정석2" [[Prototype]]: Object */
+
+        //방법2. [ ]표기법 이용
+        //         객체참조변수명["속성명"] -> 객체 { } 내부에 "속성명:값" 중에서 "값" 얻는 문법
+            console.log( book1["title"] ); //"웹 표준의 정석2"
+        //방법2. [ ]표기법 이용 
+        //        객체참조변수명["속성명"] = 변경할값; -> 객체 { } 내부에 "속성명:값" 중에서 "값" 얻는 문법
+                  book1["title"] = "웹 표준의 정석";
+            console.log( JSON.stringify( book1 ) ); //{"title":"웹 표준의 정석","pages":648}
+
+        /*
+            주제3. "속성명:값" 이 존재하지 않는 비어있는 객체 { }를 생성한 후
+                    나중에~~~~~~~ "속성명:값" 한쌍씩 추가할 수 있다.       
+        */
+          let book2 = {};           //<------------  비어있는 객체
+       // let book2 = new Object(); //<------------- 비어있는 객체
+
+        //book2 비어있는 객체에 "속성값:값" 한쌍을 넣어 객체의 정보를 수정할 수 있다.
+        book2.title = "Javascript";
+        // { title : "Javascript" }
+
+        book2.pages = 500;
+        // { title : "Javascript", pages : 500 }
+
+        book2.author = "김개똥";
+        // {title : "Javascript", pages : 500, author : "김개똥"}
+
+        //변경된 객체 확인하기 위해 출력
+        console.log( JSON.stringify( book2) ); //{"title":"Javascript","pages":500,"author":"김개똥"}
+
+        /*
+            주제4. 객체 { } 내부에 만들어져 있는 "속성명:값" <- 한쌍 삭제하기
+            
+                삭제 작성 문법
+                                delete 객체참조변수명.속성명;
+        */
+         delete book2.pages; // 삭제 결과 아래 주석에
+        //변경된 객체 확인하기 위해 출력
+        console.log( JSON.stringify( book2) ); //{"title":"Javascript","author":"김개똥"}
+
+        //let book2 = {"title":"Javascript","author":"김개똥"}; <-----------현재 book2 객체 모습       
+        //"author":"김개똥" 한쌍 삭제하기
+        delete book2.author; // author쌍 삭제!
+        //변경된 객체 확인하기 위해 출력
+        console.log( JSON.stringify( book2) ); //{"title":"Javascript"}
+
+        /*
+            주제5. 객체 중첩하기 ({ } 객체 안에 "속성명:값"에서 "값"자리에 {}객체를 포함시킬 수 있다.)
+        
+                { 속성명1:값1, 속성명2:{ 속성명3 : 값3, 속성명4 : 값4 } }
+                                    :            "값"
+
+                {
+                    속성명1 : 값2,
+                    속성명2 : {  
+                                속성명3 : 값3, 
+                                속성명4 : 값4  
+                             }                    
+                
+                }
+         */
+        let student = {   //<----- 바깥 객체
+                        name  : "Doremi",
+                        score : { //<--- 안쪽 객체
+                                    history : 85,
+                                    science : 94,
+                                    average : function(){
+                                        return ( this.history + this.science ) / 2;
+                                    //  return (      85      +       94     ) / 2;
+                                    //  return (             179             ) / 2;
+                                    //  return (             89.5;            );
+                                    
+                                    }
+
+
+                                }   
+
+                      }
+
+        // history 속성명과 함께 저장된 85 점수 가져오고 싶다.
+        //-> 바깥객체명.바깥객체속성명.안쪽객체의속성명 
+        console.log( student.score.history );  // 85               
+        
+
+        // history 과목과 science 과목의 평균을 구해서 얻고 싶다.
+        //방법.     average 메소드 호출하면 된다.
+        //호출 방법. 바깥객체명.바깥객체속성명.안쪽객체의속성명(); 
+        console.log(student.score.average()); // 89.5              
+
+    </script>
+</body>
+</html>

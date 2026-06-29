@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="text">text</p>
+
+    <script>
+        //1.   <p id="text">text</p> 요소 노드 한쌍 선택해서 상수에 저장
+        const pEl = document.getElementById("text");
+        /*  
+            선택한 요소노드에 스타일 정의 방법
+
+                    요소노드선택.style.css속성명 = 스타일값;
+        */
+        //2.  <p id="text">text</p> 요소 노드 전체중에 텍스트 노드(text)색상 빨강으로 설정
+        pEl.style.color = "red"; //결과 -> text 글자색상이 빨강으로 변경 
+
+        
+        //3.  <p id="text">text</p> 요소 노드 한쌍 선택해서 상수에 저장
+        const pEl2 = document.querySelector("p");
+
+        pEl2.style.backgroundColor = "#ff0000"; //p의 배경색을 빨강으로 설정 
+        
+        pEl2.style.color = "#ffffff"; //text 글자색상을 흰색으로 설정
+
+        pEl2.style.fontSize = "20px"; //text 글자크기가 20px로 설정 
+
+
+
+    </script>
+
+
+    
+</body>
+</html>

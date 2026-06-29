@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //주제 : 배열 메모리 생성 및 요소(데이터) 접근
+
+    //배열 메모리 생성 및 접근 실습
+        //1. [  ]를 이용해 배열 메모리 생성 후 "Apple","Banana","Cherry"문자열 각각 순서대로 저장
+        //   배열명 -> fruites
+        let fruites = ["Apple","Banana","Cherry"]; 
+
+        //2. fruites 배열 메모리의 첫번째 칸에 저장된 "Apple" 요소를 얻어와 console.log로 출력
+        console.log(fruites[0]); //Apple
+
+        //3. fruites 배열 메모리의 전체 칸에 저장된 요소 갯수 얻어 concol.log로 출력
+        console.log(fruites.length); //3
+
+    //배열 메모리에서 제공해 주는 메소드 이용 실습
+        //1. fruites 배열 메모리의 가장 마지막 칸 위치 뒤에 새로운 한칸을 늘려 "Date"요소 추가
+        fruites.push("Date");
+
+        //1.1. fruites 배열 메모리 전체 모습 console.log로 출력
+        console.log(fruites); //(4) ['Apple', 'Banana', 'Cherry', 'Date']
+        //console.log(JSON.stringify(fruites)); -> ["Apple", "Banana", "Cherry", "Date"]
+
+        //2. fruites 배열 메모리의 가장 마지막 칸 위치에 저장된 "Date"요소를 추출(잘라내기) 후 value2변수 선언 후 저장 
+        let value2 = fruites.pop();
+
+        //2.1. value2변수에 저장된 "Date" 출력
+        console.log(value2); //Date
+
+        //2.1.2. fruites 전체 배열 모습 console.log로 출력
+        console.log(fruites); //(3) ['Apple', 'Banana', 'Cherry']
+        //console.log(JSON.stringify(fruites)); -> ["Apple", "Banana", "Cherry"]
+
+        //let fruites = ["Apple", "Banana", "Cherry"];
+        //                  0        1         2       index
+
+        //3. fruites 배열 메모리의 가장 첫번째 칸에 저장된 "Apple"요소를 제거하고, 제거한 값 "Apple"추출(반환,가져오기)
+        let newData = fruites.shift();
+
+        //3.1. newData 변수 데이터 출력
+        console.log(newData);
+
+        //3.1.2. fruites 전체 배열 모습 console.log로 출력
+        console.log(JSON.stringify(fruites)); //["Banana","Cherry"]
+
+        //let fruites = ["Banana","Cherry"];
+
+        //3.1.3. fruites 배열 메모리의 가장 첫번째 칸 앞에 새로운 칸을 늘리면서 "Avodcado" 요소를 추가해서 젖아
+        fruites.unshift("Avodcado");
+
+        //3.1.4. fruites 전체 배열 모습 console.log로 출력
+        console.log(JSON.stringify(fruites)); //["Avodcado","Banana","Cherry"]
+
+        //let fruites = ["Avodcado","Banana","Cherry"]; <------ 현재 배열 메모리 전체 모습
+
+
+// 현재 배열 메모리가 제공하는 반복 메소드 forEach 활용
+
+        //1. fruites 배열 메모리에 각 칸에 저장된 각 요소(데이터)를 차례대로 반복해서 얻어 concole.log로 출력
+        //참고. forEach(function(매개변수){}) 메소드 사용!
+        fruites.forEach(function(fruite){ console.log(fruite); })
+                                          //"Avodcado"
+                                          //"Banana"
+                                          //"Cherry"
+
+        //1. fruites 배열 메모리에 각 칸에 저장된 각 요소(데이터)를 차례대로 반복해서 얻어 concole.log로 출력
+        //참고. forEach(화살표함수선언) 메소드 사용!
+        fruites.forEach( fruite => console.log(fruite) );
+                                        //"Avodcado"
+                                        //"Banana"
+                                        //"Cherry"
+
+/*
+배열 객체 메모리가 제공하는 map()메소드
+        - 배열의 각 요소에 대해 주어진 콜백함수function(){}을 호출해서 실행하고,
+          그 결과로 새로운 배열메모리를 생성해서 새로운 배열메모리 주소번지 자체를 반환하는 메소드
+
+        - map() 메소드의 특징
+          -> 원본 배열 메모리에 저장된 데이터(요소)를 변경하지 않고, 계산에 의해 새로운 배열메모리에 넣어 새 배열 주소자체를 반환함.
+
+
+   아래와 같이 fruites 배열이 존재한다.
+
+        let fruites = ["Avodcado","Banana","Cherry"];  <- 원본 데이터들이 저장된 원본 배열 메모리
+                           0         1        2       index
+*/
+        //새배열 메모리 주소저장
+        let upperFruites = fruites.map(function(fruite){
+                                        //"Avodcado".toUpperCase(); -> 모두 대문자로 변경후 "AVODOCADO"문자열 반환
+                                        //"Banana".toUpperCase(); -> 모두 대문자로 변경후 "BANANA"문자열 반환
+                                        //"Charry".toUpperCase(); -> 모두 대문자로 변경후 "CHARRY"문자열 반환
+                                return fruite.toUpperCase();
+                              //return "AVODOCADO"
+                              //return "BANANA"
+                              //return "CHARRY"
+
+                            });
+                            //새로운 배열 메모리가 생성되면서 반복해서 return 계산결과값; 순서대로 실행되어 계산결과값을 넣어줍니다.
+                            //["AVODOCADO","BANANA","CHARRY"]
+
+        //fruites원본 배열의 요소들을 가공한 새 배열 upperFruites 전체 모습 출력
+        console.log(JSON.stringify(upperFruites)); //["AVODCADO","BANANA","CHERRY"]
+
+        //화살표 함수 작성 방식으로 map 메소드 호출해서  사용해보자
+        let upperFruites2 = fruites.map(fruite => fruite.toUpperCase());
+
+        //fruites원본 배열의 요소들을 가공한 새 배열 upperFruites2 전체 모습 출력
+        console.log(JSON.stringify(upperFruites2)); //["AVODCADO","BANANA","CHERRY"]
+
+    //---------------------------------------------------------------------------------------------------------------------------
+    //보충. map메소드 사용
+
+    let numbers = [ 1, 2, 3, 4, 5 ]; //<- 원본데이터들이 저장된 원본 배열 메모리
+    //              0  1  2  3  4    index
+
+    //number 배열 메모리에 저장되어 있는 모든 숫자(요소)들을 차례대로 반복해서 얻어 자기 숫자를 곱한 결과값 하나씩 새배열에 넣어
+    //새배열 메모리 자체를 반환 받고 싶다.
+    //                                       1  -> return   1    *    1;   -> 1을 만들어 새로운 배열에 추가 -> [ 1 ]
+    //                                       2  -> return   2    *    2;   -> 4를 만들어 새로운 배열에 추가 -> [ 1, 4 ]
+    //                                       3  -> return   3    *    3;   -> 9를 만들어 새로운 배열에 추가 -> [ 1, 4, 9 ]
+    //                                       4  -> return   4    *    4;   -> 16를 만들어 새로운 배열에 추가 -> [ 1, 4, 9, 16 ]
+    //                                       5  -> return   5    *    5;   -> 25를 만들어 새로운 배열에 추가 -> [ 1, 4, 9, 16, 25 ]
+    let newNumbers = numbers.map(function(number){ return number * number; }); 
+   //[ 1, 4, 9, 16, 25 ]                         
+
+    console.log(JSON.stringify(newNumbers));
+    /*
+    =====================================================================================================================================
+
+        map() 메소드 란?
+        - 원본 배열의 각 요소를 주어진 함수로 처리한 결과를 모아 새로운 배열을 생성해서 반환하는 배열 객체의 메소드입니다.
+        - 원본 배열은 변경하지 않고, 새로운 배열을 생성합니다.
+
+        map() 메소드 작성 문법
+              
+              원본배열.map(function(요소, index, 원본배열자체){
+              
+                    return 각 요소를 가공한 새로운값;
+              
+              }, thisArg);
+    ========================================================================================================================================          
+    */
+    //1. 원본 배열 numbers2를 만듭니다.
+    let numbers2 = [1, 2, 3]; //배열메모리 : 여러개의 데이터를 저장하는 하나의 큰 메모리 공간
+    //              0  1  2   index 
+
+    //2. 객체 {} context를 만듭니다. 
+    let context = { value : 'Hello'}; //객체메모리 : 속성명과 값이 짝으로 저장되는 하나의 큰 메모리 공간
+    //              속성명 :   값                        
+       
+    //3. map() 메소드는 원본배열 numbers2에 저장된 각각의 값(요소)에 대해 function함수를 실행하고,
+    //함수function내부에 작성된 return 새로운값; 을 이용해 새로운 배열에 넣어 새 배열 자체를 반환합니다.
+    let newArray = numbers2.map(function(number){
+
+          //이 function함수가 원본배열의 각 숫자( 1, 2, 3 )에 대해 3번 실행됩니다.
+          //여기서는 number매개변수는 1, 2, 3이 순서대로 들어오는 값입니다. (하지만 실제로는 number를 사용하지 않음)
+          //this.value는 context 객체의 value속성명과 함께 저장된 'Hello'값을 새 배열에 3번 담아 반환합니다.
+          return this.value;
+                              //['Hello','Hello','Hello'] <- 새배열 만들어 반환
+    },context);
+
+//위에서의 this는 {value : 'Hello'} 를 말함, context를 기억하는..
+
+//4. 새 배열 newArray 모습 출력
+console.log(JSON.stringify(newArray)); //["Hello","Hello","Hello"] 출력
+
+
+console.log("------------------------------------------------------------------------------------------------------------------");
+
+/*
+    find() 메소드란?
+    - 배열에서 제공하는 메소드로, 배열의 각 요소에 대해 콜백함수 function을 실행하여,
+      조건을 만족하는 "첫 번째 요소"를 반환하는 기능의 메소드.
+      조건을 만족하는 요소가 없다면? undefined 단어를 반환하는 기능의 메소드.
+      원본배열에 저장된 값(요소)는 변경하지 않습니다.
+
+    find() 메소드 작성 문법
+
+      원본배열.find(function(요소, 인덱스, 원본배열자체){
+      
+      
+          return 요소에대한조건;         //요소에 대한 조건이 true이면 해당 요소를 즉시 반환
+      })
+
+    주제 : find 메소드로 조건에 맞는 요소 찾기 
+
+    let fruites = ["Avodcado", "Banana", Charry] <- 현재 배열 모습
+                       0          1         2       index
+*/
+
+let foundFruit = fruites.find(function(fruite){ return  fruite.startsWith("B")      });
+                                                //return  "Avodcado".startsWith("B") -> false
+  //"banana"  =                                 //return  "Bananan".startsWith("B") -> true
+                                                //return  "Charry".startsWith("B") -> false
+
+console.log(foundFruit); //"Banana"
+
+console.log("------------------------------------------------------------------------------------------------------------------");
+
+/*
+
+============================================================================================================================
+
+    slice() 메소드란?
+    - 원본배열에서 지정한 범위의 요소를 '추출'하여 새로운 배열을 반환하는 메소드입니다.
+      원본배열의 요소들은 변경되지 않습니다.
+
+    slice() 메소드 작성 문법
+
+      원본배열.slice([시작인덱스],[끝인덱스])
+
+          - 시작인덱스 : 몇 번째 요소(0부터 시작) 부터 추출할지 지정 (필수작성)
+          - 끝인덱스 : 어디까지 추출할지 지정 (선택작성, 특징: 지정한 위치 '직전'까지 추출) 
+
+          원본배열.slice([시작인덱스]);
+
+              -시작인덱스 위치칸의 요소부터 시작해서 끝인데스 위치칸의 요소까지 잘라내서 새배열에 담아 새배열 자체 반환 
+          
+=======================================================================================================================
+                            -3         -2       -1        반대로 읽을 때! index
+          let fruites = ["Avodcado", "Banana", Charry] <- 현재 배열 모습
+                             0          1        2       index
+
+*/
+//예제1. index 1 부터 배열의 끝(index 2)까지의 데이터를 잘라서 ["Banana", "Charry"] 자른 새로운 배열을 반환받고 싶다.
+let someFruites = fruites.slice(1);  // ["Banana","Charry"]
+console.log(JSON.stringify(someFruites)); //["Banana","Cherry"]
+
+//예제2. index 0 부터 index 2직전(1)까지 자르기 -> ["Avodcado", "Banana"]
+let sliceFruites2 = fruites.slice(0,2);
+console.log(JSON.stringify(sliceFruites2)); //["Avodcado","Banana"]
+
+//예제3. 원본 배열의 마지막 한개 요소만 추출해서 자르기 -> ["Charry"]
+let lastFruites = fruites.slice(-1);
+console.log(JSON.stringify(lastFruites)); //["Cherry"] 출력
+
+
+    </script>
+</body>
+</html>

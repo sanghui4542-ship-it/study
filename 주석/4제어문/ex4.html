@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+/*
+    문제 4: 간단한 계산기
+    
+    사용자에게 두 숫자와 연산자 (+, -, *, /)를 입력받아 결과를 출력하는 프로그램을 작성하세요.
+*/
+
+	// 사용자에게 첫 번째 숫자를 입력받아 변수 num1에 저장하세요.
+	let num1 =  parseFloat(prompt("첫 번째 숫자를 입력하세요", "0"));  
+	console.log("num1 ->" , num1);
+	
+	// 사용자에게 연산자(+, -, *, /)를 입력받아 변수 operator에 저장하세요.
+	let operator = prompt("연산자 기호중 하나를 입력하세요(+, -, *, / 중하나)");
+	console.log("operator ->" , operator);
+	
+	
+	// 사용자에게 두 번째 숫자를 입력받아 변수 num2에 저장하세요.
+	let input = prompt("두 번쨰 숫자를 입력하세요", "0");  
+	let num2 = parseFloat(input);
+	console.log("num2 ->" , num2);
+	
+    // 연산 결과를 저장할 변수 result를 선언하세요.
+	let result;
+    
+    //switch 문을 사용하여 operator의 값에 따라 num1과 num2의 연산 결과를 result에 저장하세요.
+    //덧셈(+), 뺄셈(-), 곱셈(*), 나눗셈(/)을 처리하고, 나눗셈의 경우 num2가 0일 때는 오류 메시지를 출력하세요.
+    //아래에 주석구문 밑에 코드를 작성 하세요.    
+    
+    	// switch 문을 사용하여 operator의 값에 따라 num1과 num2의 연산 결과를 result에 저장하세요.
+    	
+    	//      "+" 또는 "-" 또는 "*" 또는 "/"  중 하나의 값  operator
+    	switch (operator) {
+    		// operator 변수의 값이 "+"와 같을 경우 
+			case "+":
+				// num1과 num2를 더한 값을 result에 저장
+				result = num1 + num2;	
+				
+				break;
+			
+			// operator 변수의 값이 "-"와 같을 경우 
+			case "-":	
+				// num1에서 num2를 뺀 값을 result에 저장
+				result = num1 - num2;
+			
+				break;
+			
+			// operator 변수의 값이 "*"와 같을 경우 
+			case "*":	
+				// num1에서 num2를 곱한 결괏값을 result에 저장
+				result = num1 * num2;
+				
+				break;			
+			
+			// operator 변수의 값이 "/"와 같을 경우 
+			case "/":	
+				 // if else 조건문 사용 -> num2가 0이 아닐 경우와  0일 경우 를 각각 나눠 
+				 //                    0이 아닐 경우에는 num1을 num2로 나눈 값을 result에 저장
+				 //					   num2가 0일 경우  "0으로 나눌 수 없습니다." 오류 메시지를 result에 저장
+				 if(num2 !==  0){//num2가 0이 아닐 경우
+					 
+					 //num1을 num2로 나눈 값을 result에 저장
+					 result = num1 / num2;
+					 
+				 }else{//num2가 0일 경우
+					 //"0으로 나눌 수 없습니다." 오류 메시지를 result에 저장
+					 result = "0으로 나눌 수 없습니다.";
+				 }
+									
+				break;			
+			 
+			// 위의 조건에 해당하지 않는 경우	 
+			default:
+			    // 오류 메시지를 result에 저장
+	            result = "잘못된 연산자 기호 입력 했음! 확인바람";
+				break;
+				
+		}//switch의 닫는 중괄호 기호
+    
+      // document.write를 사용하여 결과를 출력하세요.
+      document.write("결과: " + result);
+    
+		
+		
+ /*
+      parseFloat() 함수란?
+     	- parseFloat() 함수는 문자열을  실수(소수 포함 숫자)데이터로 변환하는 JavaScript의 내장 함수입니다.
+     	- parseFloat() 문법
+     	
+     			parseFloat(string);
+         
+     			  string : 변환할 문자열
+     			    반환값 : 변환된 실수 (소수점 포함 숫자)
+     			    변환할 수 없으면 NaN(Not-a-Number) 반환
+
+         - parseFloat()의 동작 방식
+          	1️. 문자열에서 숫자가 시작되면 해당 숫자 부분만 변환
+          	2️. 공백은 무시하지만, 숫자가 아닌 문자를 만나면 변환을 멈춤
+          	3️. 변환할 숫자가 없으면 NaN 반환			    
+ 정리
+     함수						변환 대상				반환값
+     parseInt()				정수 변환				소수점 이하 버림
+     parseFloat()			실수 변환				소수점 유지
+     Number()			전체 변환 가능 여부 확인		변환 불가하면 NaN
+
+     체크포인트) parseFloat()은 소수점 있는 숫자 변환에 적합
+     체크포인트) parseInt()는 정수 변환 (소수점 버림)
+     체크포인트) Number()는 전체 문자열이 숫자인 경우 변환 가능	
+
+     결론: parseFloat()은 소수점을 포함한 숫자로 변환할 때 필수적인 함수입니다!
+      */
+     // parseFloat() 사용 예제
+     //   1) 기본적인 숫자 변환 : 소수점이 있는 숫자를 변환할 때 사용합니다
+     /*      console.log(parseFloat("3.14"));   // 3.14
+     		 console.log(parseFloat("10.99"));  // 10.99
+     		 console.log(parseFloat("0.123"));  // 0.123
+     		 console.log(parseFloat("-5.67"));  // -5.67 
+     	 	 
+     	 2) 문자열에서 숫자 추출 (숫자가 먼저 나오는 경우) 
+     		 console.log(parseFloat("3.14abc"));   // 3.14
+     		 console.log(parseFloat("10.5px"));    // 10.5
+     		 console.log(parseFloat("99.99%"));    // 99.99
+     		 console.log(parseFloat("0.56abc123")); // 0.56
+     	 
+     		 숫자가 시작되면 변환을 진행하지만, 숫자가 아닌 문자를 만나면 변환을 멈춤.
+     		 
+     	 3) 숫자로 변환할 수 없는 경우 (NaN 반환)	 
+     		 
+     		 console.log(parseFloat("abc3.14"));  // NaN
+     		 console.log(parseFloat("hello"));    // NaN
+     		 console.log(parseFloat(" "));        // NaN
+     		 console.log(parseFloat(""));         // NaN
+
+     		 숫자로 변환할 수 없는 문자열은 NaN을 반환합니다.
+     		 
+     	 4) 숫자 앞뒤 공백 처리	 
+     	 
+     		 console.log(parseFloat("   45.67   ")); // 45.67
+     		 console.log(parseFloat("\t 99.99\n"));  // 99.99
+
+     		  공백, 탭, 줄바꿈 문자는 자동으로 무시됩니다.
+     		  
+        	 5) parseInt()와 parseFloat()의 차이
+        	 
+     	   	console.log(parseInt("3.14"));   // 3  (정수 변환)
+     	   	console.log(parseFloat("3.14")); // 3.14 (실수 변환)
+
+     	   	parseInt()는 소수점 이하를 버림, parseFloat()은 소수점까지 유지.
+     	 
+     */
+		
+		
+	</script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+

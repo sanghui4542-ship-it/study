@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><title>변수 실습</title>
+<style>body{font-family:sans-serif;max-width:600px;margin:40px auto;padding:0 20px;line-height:1.8;font-size:16px}</style>
+</head>
+<body>
+<h3>출력 결과는 F12 → Console 탭에서 확인하세요.</h3>
+<script>
+// ===== 3차시 실습: let과 const =====
+
+// TODO 1: 바뀌지 않는 값 → const 로 캐릭터 이름을 만드세요.
+//-> 캐릭터 이름은 안 바뀌므로 const 로 name 상수 메모리를 만들고 "기사" 저장
+const name = "기사";
+console.log(name); //"기사"
+
+// TODO 2: 바뀌는 값 → let 으로 hp 를 만들고 100 을 넣으세요.
+//-> hp 는 전투 중 바뀌므로 let 으로 변수 메모리를 만들고 100 저장
+let hp = 100;
+
+// TODO 3: hp 를 70 으로 바꿔보세요. (잘 됩니다)
+//-> let 으로 만든 변수 메모리라서 70으로 다시 저장 가능 (100 -> 70)
+hp = 70;
+console.log(hp);
+
+// TODO 4: name 을 "마법사"로 바꿔보세요. → 오류가 납니다! (const라서)
+name = "마법사";   // 주석을 지우면 빨간 에러를 직접 볼 수 있어요
+
+</script>
+</body>
+</html>

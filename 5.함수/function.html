@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            함수 선언 방법 2
+
+                1. 함수 선언문
+
+                    function 함수명(매개변수1, 매개변수2) {
+                    
+                        실행할 코드;
+                        
+                        return 반환값;                    
+                    }
+        
+
+                2. 함수 호출
+
+                    함수명(인수1, 인수2);
+
+
+                3. 이 실습의 핵심
+                    - 함수 선언은 실행할 코드를 준비하는 단계이다.
+                    - 함수 호출은 준비된 코드를 실행하는 단계이다.
+                    - 매개변수는 함수가 값(인수)을 받기 위해 선언한 변수이다.
+                    - 인수는 함수를 호출할 때 전달하는 실제 값이다.
+                    - return 은 함수 코드 실행 결과값을 함수를 호출한 줄의 자리로 되돌려주는 예약어입니다.     
+
+
+
+        */
+        //문제1. 두 수를 더해서 반환하는 add 함수 선언
+        function add(a, b) {
+            //a와 b는 각각 매개변수이다.
+            //return은 a + b의 계산 결과를 함수 밖으로 반환한다.
+            return a + b;
+        }
+
+        //add 함수 호출
+        // 3은 a에 저장되고, 5는 b에 저장된다.
+        // 반환값 8이 console.log()에 전달되어 출력된다.
+        console.log(add(3, 5)); // 8
+
+        //문제2. 매개변수로 두개의 인수를 전달받아 두값 중에서 큰 값 하나를 반환하는 max함수 정의
+        function max(a, b) {
+
+            if (a > b) {
+                return a; //더 큰값 하나 반환
+            } else {
+                return b; //더 큰값 하나 반환
+            }
+        }
+
+        //max함수 호출할 때 인수로 7과 10을 전달해 큰값 10을 반환받아 consle.log로 출력
+        console.log(max(7, 10));
+
+        //문제3. 매개변수로 한개의 숫자를 전달 받아 양수이면 true반환, 음수이면 false를 반화하는 기능의
+        //      isPositive 함수 정의
+        function isPositive(a) {
+            if (a > 0) { //a 매개변수로 받은 숫자가 양수이면?
+                return true;
+            } else {//a 매개변수로 받은 숫자가 음수이면?
+                return false;
+            }//return 의 문법이 한 줄이면 중괄호 생략 가능!!!
+
+        }
+        //----------------------------------------------------------------------------------------------
+        // isPositive 함수 호출할 때.. 인수5를 매개변수로 전달해서 true반환 받고 console.log로 출력
+        console.log(isPositive(5)); //true
+
+
+        // isPositive 함수 호출할 때.. 인수-2를 매개변수로 전달해서 false반환 받고 console.log로 출력
+        console.log(isPositive(-2)); //false
+
+
+        //문자4. 매개변수로 한개의 숫자를 전달받아 전달받은 숫자가 짝수이면? true반환하고
+        //                                                 홀수이면? false 반화하는 기능의 isEven함수 정의
+        /*
+        function isEven(num) {
+             if (num % 2 === 0) {
+                 return true;
+             } else {
+                 return false;
+             }
+         } //if로 쓰는 방법 */
+
+        function isEven(num) {
+            return isEven % 2 === 0;
+        } //간단하게 쓰는 방법 
+
+        //isEven 함수를 호출 할때 인수 4를 전달해서 true반환 받아 console.log로 출력
+        console.log(isEven(4)); //true 뭐가 문제일까...
+
+        //isEven 함수를 호출 할때 인수 7을 전달해서 false반환 받아 console.log로 출력
+        console.log(isEven(7)); //false
+
+        //문제5. 숫자 1부터 매개변수n으로 전달받은 인수 하나의 합을 구하는 기능의 sumUpTo함수 정의
+        //      기능 : 숫자 1부터 매개변수n으로 전달받은 인수까지의 합을 계산해서 반환 합니다.
+        function sumUpTo(n){ 
+            
+        //숫자 1부터 n매개변수로 전달 받은 값을 1씩 증가 시키면서 누적해서 저장할 눈적변수 sum 선언언
+        let sum = 0;    
+    
+        for(let i = 1; i <= n; i++){
+            sum = sum + i; // sum += i;
+        }
+        
+        return sum; //숫자 1부터 매개변수 n으로 전달받은 인수까지의 합이 저장된 sum 변수값 반환
+        }
+        //-----------------------------------------------------------------------------------
+        //sumUpTo 함수 호출이때 인수 5를 매개변수n으로 전달해서
+        //1 + 2 + 3 + 4 + 5 -> 15를 구해 반환 받아 console.log로 출력력
+        console.log(sumUpTo(5)); //15
+
+    </script>
+</body>
+
+</html>
