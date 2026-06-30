@@ -308,14 +308,14 @@ history.length          전체 방문 기록 개수
 - 각 노드를 속성으로 참조해서 이동/선택 가능
 구분         속성                  설명
 ──────────  ─────────────      ────────────────
-공통        parentNode           부모 노드를 반환
+공통         parentNode           부모 노드를 반환
             childNodes           자식 노드 전체 반환(NodeList)
             firstChild           첫 번째 자식 노드
             lastChild            마지막 자식 노드
             previousSibling      이전 노드
             nextSibling          다음 노드
 
-요소 전용   parentElement        부모가 요소(Element)인 경우
+요소 전용    parentElement        부모가 요소(Element)인 경우
             children             자식 요소 전체 반환(HTMLCollection)
             firstElementChild    첫 번째 자식 요소
             lastElementChild     마지막 자식 요소

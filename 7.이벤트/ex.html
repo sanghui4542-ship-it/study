@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        let color = ["white", "yellow", "aqua", "purple"];
+        let i = 0;
+
+        function colorBg(){     
+            if(i >= 3){
+                i = 0;
+            } else {
+                i++;
+            }
+
+            let bodyTag = document.getElementsByTagName("body")[0];
+            bodyTag.style.backgroundColor = color[i];
+        }
+
+        window.onload = function(){
+
+            let btn2 = document.querySelector("#btn2");
+
+            btn2.onclick = function(){  
+                colorBg();     
+            }
+
+            let btn4 = document.querySelectorAll("button")[3];
+
+            btn4.onmouseout = function(){   
+                colorBg();        
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <p>
+        <button onclick="colorBg();">버튼1</button>
+    </p>
+
+    <p>
+        <button id="btn2">버튼2</button>
+    </p>
+
+    <p>
+        <button onmouseover="colorBg();">버튼3</button>
+    </p>
+
+    <p>
+        <button>버튼4</button>
+    </p>
+</body>
+</html>
