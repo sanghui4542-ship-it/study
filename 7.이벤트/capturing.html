@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/event.css">
+</head>
+<body>
+    BODY
+    <div>
+        DIV
+            <section>
+                SECTION
+                    <p>
+                        P
+                    </p>
+            </section>
+    </div>
+    <script>
+         //1. 모든 html 요소들을 NodeList유사배열에 담아 선택해 옵니다.
+         const elements = document.querySelectorAll("*");
+
+         //2. for  of  반복문을 이용해  선택한 모든 html요소들을 NodeList유사배열에서 반복해서 얻어 사용
+         for(let element  of  elements){
+
+            //반복실행될 코드 
+            //-> click 이벤트 등록 후 이벤트핸들러 함수 실행되게 작성
+            element.addEventListener("click", function(event){
+
+                  //console.log(event.target.tagName); //BODY
+                                                       //BODY
+
+                    console.log(event.currentTarget.tagName);   //HTML
+                                                                //BODY
+
+
+            },true);// true -> 캡처링 이벤트 전파 
+
+	   			//만약 <body>BODY</  body>영역을 클릭하면  
+	   			//    <body></  body>영역의 부모인 <html></   html>영역의 click이벤트를 처리하고
+	   			//	  그후 <body></  body>영역의 click이벤트를 처리 하니 
+	   			//1.  BODY  <--- <html><body>BODY</  body></  html> 
+	   			//                부모영역의 click이벤트 처리 출력결과 BODY가 먼저 나오고
+	   			
+	   			//2.  BODY  <---- <body>BODY</  body> click 이벤트가 직접 발생한 
+	   			//                  자신 <body>BODY</   body>요소 영역의 click이벤트 처리가 나중에 되어서
+	   			//					BODY가 마지막에 한번더 출력됩니다.
+	 
+	   			//출력 결론  BODY
+	   			//          BODY    
+	   			//========================두번 출력=========================== 
+         }
+
+
+
+
+/*
+		   다른 for문의 문법 ( for ... of 문법)
+		   
+		   		for(let 변수  of  이터러블){
+		   			
+		   			//반복실행 할 코드 작성
+		   			
+		   		}
+		
+		변수 : 반복할때 마다 이터러블객체의 각 요소를 반복해서 꺼내와 저장할 변수 
+		이터러블 : 배열, 문자열, Set, Map 등 반복가능한 객체 넣을 수 있다.
+	
+		//배열 생성
+		const fruits = ["사과", "바나나",  "오렌지"];  // <---배열
+		//                0        1        2     index
+
+
+        fruits배열에 저장된 문자열의 갯수만큼 반복해서 
+        0 index위치의 "사과" 부터   2 index위치에 저장된 "오렌지"를 차례대로 꺼내서
+        변수에 저장 후 반복해서 사용
+		
+        for(let  fruit   of  fruits){
+			
+			console.log(fruit);
+					   //"사과"
+					   //"바나나"
+					   //"오렌지"
+		}
+		
+		
+		let str = "HELLO";
+		
+		//"HELLO" 문자열의 총 문자 갯수 만큼 반복 하는데
+		// 01234  index
+		//먼저 0 index  H를 가져와  let ch변수로 전달받아   {  console.log(ch);   }
+		// ~~~~~~~
+		//마지막 4 index O까지 가져와 let ch변수에 전달 받아    {  console.log(ch);   } 출력후
+		//for  of 구문을 빠져나감 
+		for(let ch  of  str){
+   			
+   			//반복실행 할 코드 작성
+   			console.log(ch);
+   			//"H"
+   			//"E"
+   			//"L"
+   			//"L"
+   			//"O"
+   			
+   		}
+		*/
+    </script>
+    
+</body>
+</html>

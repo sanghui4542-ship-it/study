@@ -382,25 +382,227 @@
 
         //-----------------  비밀번호 유효성 검사 -----------------------
         //비밀번호 입력할수 있는 <input>요소와   해당 오류 메세지 보여줄 <span>을 각각 선택해서 가져온다
-        const inputPwd = 
-        const pwdError = 
+        const inputPwd = document.getElementById("uPWD");
+        const pwdError = document.getElementById("pwd");
 
         //비밀번호 입력할수 있는 <input>요소에 keyup이벤트 등록 후 처리 
+        inputPwd.addEventListener("keyup", validatePassword);
 
-        //처리내용1.  비밀번호 입력하지 않았는지 검사 후  입력하지 않았으면? <span>사이에 "비밀번호 입력해주세요" 보여준다. 
-        //           그리고  checkVerifications 배열의 2 index 칸에  false 저장 
+        function validatePassword(){
+            //처리내용1.  비밀번호 입력하지 않았는지 검사 후  입력하지 않았으면? <span>사이에 "비밀번호 입력해주세요" 보여준다. 
+            //           그리고  checkVerifications 배열의 2 index 칸에  false 저장 
+            if(inputPwd.value.trim() === ""){
+                pwdError.innerText = "비밀번호를 입력해 주세요";
+                checkVerifications[verificationType.PWD] = false;
+            }
+            //처리내용2.  비밀번호  4~10 사이로 입력하지 않았다면? <span>사이에  "4~10자로 입력해주세요" 보여준다.
+            //           그리고  checkVerifications 배열의 2 index 칸에  false 저장  
+            else if(inputPwd.value.length  <  4  ||  inputPwd.value.length > 10 ){
+                pwdError.innerText = "4~10자로 입력해주세요";
+                checkVerifications[verificationType.PWD] = false;
+            }
+            //처리내용3.  처리내용1과 처리내용2 의 모든 조건이 성립하지 못 한다면? 
+            //          <span>사이에 ""넣어서 오류메세지 제거해서 보여준다.
+            //          그리고  checkVerifications 배열의 2 index 칸에  true 저장 
+            else{
+                    //정상적으로 비밀번호를 입력했으니 오류메세지 제거를 위해 ""넣어 보여준다
+                    pwdError.innerText = "";
+                    checkVerifications[verificationType.PWD] = true;
+            }
+       }    
 
-        //처리내용2.  비밀번호  4~10 사이로 입력하지 않았다면? <span>사이에  "4~10자로 입력해주세요" 보여준다.
-        //           그리고  checkVerifications 배열의 2 index 칸에  false 저장  
+       //---------------------- 비밀번호 재입력(확인) 검사------------------------------
+       //비밀번호 확인 입력창 input과  오류 메세지 보여줄 <span>요소를 선택해서 가져온다.
+        const inputPwdConfirm = document.getElementById("uPWD_Confirm");
+        const pwdConfirmError = document.getElementById("pwd_confirm");
 
-        //처리내용3.  처리내용1과 처리내용2 의 모든 조건이 성립 한다면? <span>사이에 ""넣어서 오류메세지 제거해서 보여준다.
-        //          그리고  checkVerifications 배열의 2 index 칸에  true 저장 
+        //비밀번호 확인 입력창  input에 keyup이벤트 등록 후 처리 
+        inputPwdConfirm.addEventListener("keyup", () => {
+
+            if(inputPwdConfirm.value.trim() === ""){
+
+                pwdConfirmError.innerText = "비밀번호 확인해 주세요";
+                checkVerifications[verificationType.PWD_CONFIRM] = false;
+
+            //입력한 비밀번호와 비밀번호확인 입력창에 입력한 비밀번호가 일치하지 않느냐?
+            }else if(inputPwd.value.trim() !== inputPwdConfirm.value.trim()){
+
+                pwdConfirmError.innerText = "두 비밀번호가 다릅니다";
+                checkVerifications[verificationType.PWD_CONFIRM] = false;
+
+            }else{//비밀번호 확인 입력창에 비밀번호 입력했고, 두 비밀번호가 일치하면?
+
+                pwdConfirmError.innerText = "";
+                checkVerifications[verificationType.PWD_CONFIRM] = true;
+            }
+        });
+
+        //-------------------- 직업 선택 검사 ----------------------------------------
+        //직업 선택 드롭다운(<select>요소) 과  오류 메세지 보여질 <span>요소 선택해서 가져온다.
+        const selectWork = document.getElementById("work");
+        const workError = document.getElementById("work-error");
+
+        //<select>요소 내부에 작성된 <option>들중 하나를 선택하는 동작(change 이벤트) 등록 처리 
+        selectWork.addEventListener("change", () => {
+
+    
+            //1. 직업선택을 위해 3개의 <option>이 있는데 하나도 선택하지 않았다면?
+            if(selectWork.value === "직업명"){
+
+                workError.innerText = "직업을 선택해주세요";
+                checkVerifications[verificationType.JOB] = false;
+
+            //2. 직업선택을 위해 3개의 <option>중에 하나라도 선택 했다면?
+            }else{
+               
+                workError.innerText = "";
+                checkVerifications[verificationType.JOB] = true; 
+            }
+
+        });    
+
+        //--------------------- 성별 선택 검사 -----------------------------
+        // 성별 선택은 라디오 버튼 2개로 구성되어 있고, 둘 다 name="sex"로 동일한 이름을 가지고 있음
+        // document.getElementsByName('sex')메소드는 
+        // 같은 name속성 값 sex를 가진 모든 요소를 NodeList(유사배열)에 담아 반환
+        // 요약 : 라디오 버튼 요소 2개 NodeList 유사배열에 담아 선택해 오자  
+        const radioGenders = document.getElementsByName('sex');
+        //[<input type="radio" value="male" />, <input type="radio"  value="female" /> ]
+        //                0                                    1                         index        
+
+        //<span id="gender-error">성별을 체크해 주세요</span> 선택 
+        const genderError =  document.getElementById("gender-error");
+
+        //NodeList배열인 radioGenders에대해 forEach() 메소드 사용!
+        //-> 각 라디오 버튼에 change이벤트를 반복해서 각각 등록 후 
+        //   각 라디오 버튼이 선택될때 마다 이벤트 처리 함수 실행되게 하자 
+        radioGenders.forEach((element)=>{
+
+            element.addEventListener("change",() => {
+
+                //change 이벤트가 발생하면(두 라디오 버튼 중 하나를 선택하면) 처리할 코드 작성
+                //1. 성별 선택하는 라디오 버튼 둘다 선택하지 않았느냐?
+                if( !radioGenders[0].checked && !radioGenders[1].checked ){
+                    
+                    genderError.innerText = "성별을 체크해 주세요";
+                    checkVerifications[verificationType.GENDER] = false; //<---- 유효성 실패 값 
+                }
+                //2. 성별 선택하는 라디오 버튼 두개중 하나라도 선택이 되었느냐?
+                else{
+                    genderError.innerText = "";
+                    checkVerifications[verificationType.GENDER] = true; //<---- 유효성 통과 값
+                }
+            });
+
+        });
+        // ------------------------------ 취미 체크 검사 --------------------------------
+
+        //취미 체크 박스들  (name="hobby")을 모두 배열에 담아 선택해 옵니다.
+        const checkHobbies = document.getElementsByName("hobby");
+        /*
+             [
+                <input type="checkbox" name="hobby" id="h1" value="독서" />,  0 index
+
+                <input type="checkbox" name="hobby" id="h2" value="등산" />,  1 index
+
+                <input type="checkbox" name="hobby" id="h3" value="낚시" />   2 index
+            ]
+        */
+        //취미 오류 표시 <span></span>요소 선택 
+        const hobbyError = document.getElementById("hobby-error");
+
+        //각 체크 박스요소에 상태 변경 이벤트(체크/체크 해제 된 change이벤트) 발생시 이벤트 핸들러 함수 실행되게 작성
+        checkHobbies.forEach((element)=>{
+
+            element.addEventListener("change",() => {              
+                //플래그변수 let flag : 체크 박스 중 하나라도 체크되면? true 저장, 체크되어 있지 않으면 false 저장
+                let flag = false;
+
+                //checkHobbies배열.forEach()메소드를 이용하여 하나라도 체크 되어 있으면? flag변수값  true로 저장 시키자
+                checkHobbies.forEach((checkBox)=>{
+                    if(checkBox.checked) flag = true; //하나라도 체크되어 있으면 flag변수값 true로 저장 
+                });
+
+                if(flag){ //하나라도 체크 되어 있다면?
+                    hobbyError.innerText = "";  //오류 메세지 제거를 위해 "" 넣기
+                    checkVerifications[verificationType.HOBBY] = true; //<- 체크되어 있으니 통과  
+
+                }else{//모두 체크되어 있지 않다면?
+                    hobbyError.innerText = "취미를 하나 이상 체크해 주세요";
+                    checkVerifications[verificationType.HOBBY] = false; //<- 모두 미체크 된 상태이니 실패 
+                }
+            });
+
+        });
+
+        //------------------------- 가입 동기 (textarea) 검사 -----------------------------
+        //가입 동기 textarea 요소는 name="motivation"으로 되어 있으며, getElementsByName()으로 배열에 담아 선택해온다.
+        //반환 받은 배열의 0 index에 저장된 <textarea name="motivation"></textarea> 요소를 꺼내와 저장 
+        const areaMotivation = document.getElementsByName("motivation")[0];
+/*
+        [   <textarea name="motivation"></textarea>  ]
+                                0                          index
+*/  
+        //가입 동기 오류 메세지 표시 <span id="motivation-error"></span>요소 선택 해서 저장
+        const motivationError = document.getElementById("motivation-error");
+
+        //textarea요소에 keyup이벤트 등록후 이벤트 핸들러 함수 처리 하게 정의
+        areaMotivation.addEventListener("keyup", function(){
+
+            // 문자열.split("구분자")=> 문자열을 "구분자" 기준으로 잘라내어 새로운 배열에 담아 배열을 반환 하는 메소드.
+            //
+            //  예)	"a,b,c".split(",") =>  ["a", "b", "c"]
+
+            // 여기서는 줄바꿈을 기준으로 나누기 위해 split을 사용.
+            // 줄바꿈의 표시 방법은 운영체제/브라우저마다 다를 수 있는데 대표적으로:
+            // -  "\n"    (유닉스, 리눅스, macOS 최신)
+            // -  "\r\n"  (윈도우 )	
+
+            //입력한  줄 수가 2줄 이상인지 검사
+                //value.split(/\r*\n/)는 (\r\n) 또는  (\n) 모두를 줄바꿈으로 인식하도록 처리 
+                //예: "a\nb" -> ["a","b"] 이므로 length는 2(두 줄)
+            let lineCount  = areaMotivation.value.split(/\r*\n/).length;   
+
+            if(lineCount >= 2){
+                //textarea요소에 입력한 가입동기가 2줄 이상이면 통과    
+                motivationError.innerText = "";
+                checkVerifications[verificationType.MOTIVATION] = true;
+
+            }else{
+                //textarea요소에 입력한 가입동기가 2줄 미만이면 안내메세지를 보여주고 실패처리 
+                motivationError.innerText = "가입 동기를 두줄 이상 입력해주세요";
+                checkVerifications[verificationType.MOTIVATION] = false;
+            }
 
 
+        });
+        //------------------------------- 가입 버튼 클릭시 처리 -----------------------------
 
+        //가입 버튼 <input type="button" value="가입" id="submit" /> 요소를 선택하고 click 이벤트 등록!
 
+        document.querySelector("#submit").addEventListener("click", () => {
 
-    </script>
+            //checkVerifications 배열 모습   
+            //[true,  true, true, true, true, true, true, true]
+            //   0      1      2     3    4     5     6     7         index
+
+            //모든 입력 항목에 이상없이 유효성 검사에 통과 되었다면?
+            if(checkVerifications.every(bool=>bool)){
+                
+                alert("회원가입 요청이 완료 됩니다...");
+            }
+        });
+
+            /*
+                checkVerifications.every((bool)=>{ return bool; }) 메소드는  배열의 모든 요소가 true인 검사한다.
+
+                배열에 하나라도 false가 있으면? 전체결과는 false를 반환하지만
+                
+                배열에 모두 true가 저장되어 있으면? 전체결과는 true하나로 반환합니다.
+
+            */
+
+     </script>
 
 
 

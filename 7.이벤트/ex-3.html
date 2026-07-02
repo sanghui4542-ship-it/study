@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* <div id="box"></div> 선택 */
+        #box {
+            width : 200px;
+            height: 200px;
+            border: 1px  solid #222;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 예제 주제 : 마우스로 mousemove이벤트가 발생하면 마우스포인터의  현재  x,y좌표 위치 알아내기 -->
+    
+    <p>사각형 내부에서 마우스포인터를 이동시켜 보세요</p>
+
+    <div id="box"></div>
+
+    <script>
+        //<div id="box"></div> 요소 선택
+        const box = document.querySelector("#box");
+
+        //선택한 <div id="box"></div> 요소에 "mousemove"이벤트 등록 후 이벤트 핸들러 함수로 처리
+        box.addEventListener("mousemove", (event)=>{ 
+                                      /*            
+                                         event 매개변수로 전달 받는 객체?
+                                         - mousemove이벤트가 발생한 div요소의 정보를 지닌 Event객체.
+                                      */
+            console.log(`mousemove 이벤트가 발생한 위치 : ${event.pageX}, ${event.pageY}`);
+
+        });
+
+
+    </script>
+
+
+
+</body>
+</html>

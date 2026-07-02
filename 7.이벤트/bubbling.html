@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/event.css">
+
+<!--
+    1. 이벤트 버블링 전파
+    -  특정 요소에서 이벤트가 발생했을 때 그 이벤트가 해당 요소뿐만 아니라
+       그 요소의 부모요소, 부모 요소의 부모요소에서도 똑같이 발생한 것으로 간주하는것    
+
+    2. 버블링 전파 를 막으려면?
+    -   event.stopPropagation() 메소드 사용!
+-->
+    <script>
+        window.onload = function(){
+
+            document.querySelector("p").addEventListener("click",function(event){
+
+                console.log("p요소에 click이벤트가 발생되어 click이벤트 처리 구문 출력");
+               
+                event.stopPropagation(); //부모요소들에 버블링 이벤트 전파 차단
+            });
+        }
+    </script>
+</head>
+<body>
+    BODY
+    <div  onclick="console.log('div');" >
+        DIV
+        <section onclick="console.log('section');">
+            SECTION
+            <p>
+               P  
+            </p>
+        </section>
+    </div> 
+</body>
+</html>

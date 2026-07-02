@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Web Programing</h1>
+    <ul id="item">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Javascript</li>
+    </ul>
+    <script>
+        const items = document.querySelectorAll("li");
+
+        for(let item of items){
+
+            items.addEventListener["click", function(){
+                
+                //this : 이벤트가 발생한 대상요소를 선택해 오는 예약어.
+                //this.parentNode : 이벤트가 발생한 대상요소의 부모요소선택
+                //this.parentNode.removeChild(this);  :  부모요소 사이에 작성된 이벤트가 발생한 자식 요소 삭제
+
+                //this.parentNode.removeChild(this); 
+                //방법2.
+                this.remove(this);
+
+            }];
+
+        }
+
+
+
+
+    </script>
+</body>
+</html>
