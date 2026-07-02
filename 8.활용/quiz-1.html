@@ -11,9 +11,9 @@
     <div id="container">
       <h1>참가자 명단</h1>
       <form>
-        <ul id="userInput"> <!--  -->
+        <ul id="userInput">
           <li>
-            <label for="username">이 름</label> 
+            <label for="username">이 름</label>
             <input type="text" id="username" />
           </li>
           <li>
@@ -36,44 +36,40 @@
     </div>
 
     <script>
-      const username = document.querySelector("#username");  // 참가자 이름 <input type="text" id="username" /> 요소 선택
-      const major = document.querySelector("#major"); // 참가자 전공 <input type="text" id="major" />요소 선택
-      const bttn = document.querySelector("form > button"); // <button>등록하기</button>버튼 요소에 이벤트 등록 후 처리
+      const username = document.querySelector("#username"); //<input type="text" id="username" />
+      const major = document.querySelector("#major");       //<input type="text" id="major" />
+      const bttn = document.querySelector("form > button"); //<button>등록하기</button>
 
-      //선택한 요소에 click 이벤트를 등록해
-      //사용자가 click 할때마다 이벤트핸들러 함수가 호출되어 실행
+      //<button>등록하기</button> click하면 
       bttn.addEventListener("click", (e) => {
 
-        e.preventDefault();
+        e.preventDefault();//<form>의 submit 전송 이벤트 차단 
+        let tbody = document.querySelector("#attendant > tbody");//<tbody></tbody>
 
-        let tbody = document.querySelector("#attendant > tbody"); 
+        let newTr = document.createElement("tr");//<tr></tr>
 
-    
-        let newTr = document.createElement("tr"); 
-
-        let nameTd = document.createElement("td");
-            nameTd.innerText = username.value;
+        let nameTd = document.createElement("td");//<td></td>
+            nameTd.innerText = username.value;    //<td>김길동</td>
   
+        username.value = ""; // <input type="text" id="username" value="" />
 
-        username.value = "";
-
-
-        let majorTd = document.createElement("td");
-            majorTd.innerText = major.value;
+        let majorTd = document.createElement("td");//<td></td>
+            majorTd.innerText = major.value;       //<td>컴공</td>
          
 
-        major.value = "";
+        major.value = ""; //<input type="text" id="major" value=""/>
 
-
-        newTr.appendChild(nameTd);
-
-
-        newTr.appendChild(majorTd);
-
-
-
+        newTr.appendChild(nameTd);//<tr><td>김길동</td></tr>
+        newTr.appendChild(majorTd);//<tr><td>김길동</td><td>컴공</td></tr>
         tbody.appendChild(newTr);
-
+        /*
+          <tbody>
+            <tr>
+                <td>김길동</td>
+                <td>컴공</td>
+            </tr>
+          </tbody>
+        */
       });
     </script>
   </body>

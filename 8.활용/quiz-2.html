@@ -14,16 +14,16 @@
 
   <script>
     //<button id="bttn">클릭!</button>  -  클릭할 버튼 
-    const bttn =  이글 지우고 작성
+    const bttn =  document.querySelector("#bttn");
     
     //<div id="noti-box"></div> - 알림메세지 보여줄 영역
-    const notiBox =  이글 지우고 작성
+    const notiBox =  document.querySelector("#noti-box");
 
     //bttn상수에 저장된 <button>버튼에 click이벤트 등록
-    bttn.addEventListener( 이글 지우고 작성   , () => {
+    bttn.addEventListener( "click", () => {
 
       //<div></div>노드 생성
-       const noti = 이글 지우고 작성
+       const noti = document.createElement("div");
                     
       //<div class='noti'></div>
       noti.classList.add('noti');
@@ -34,15 +34,15 @@
       //<div class='noti'>알림 내용이 표시됩니다.</div>  알림메세지보여주는 영역을
       //미리 만들어져 있는  <div id="noti-box"></div>부모요소노드의 컨텐트영역에
       //자식노드로 추가!
-      notiBox.appendChild(  이글 지우고 작성  );
+      notiBox.appendChild(noti);
       /*
             <div id="noti-box">            
               <div class='noti'>알림 내용이 표시됩니다.</div>             
             </div>
       */
 
-      //3000초 휴식 후  실행문 실행시키고 함수 종료 
-      window.setTimeout( () => {  이글 지우고 작성       }, 3000);
+      //3초 휴식 후  실행문 실행시키고 함수 종료 
+      window.setTimeout( () => {  noti.remove();  }, 3000);
 
 
     });

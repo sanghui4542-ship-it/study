@@ -6,38 +6,35 @@
     <title>노드 삭제하기</title>
 </head>
 <body>
-    <h1>Web Programing</h1>
-    <ul id="item">
+     <h1>Web Programming</h1>   
+     <ul id="items">
         <li>HTML</li>
         <li>CSS</li>
         <li>Javascript</li>
-    </ul>
-    <script>
-        //<h1>Web Programing</h1> 요소 노드 선택
+     </ul>
+     <script>
+        //<h1>Web Programming</h1> 요소노드 선택
         const title = document.querySelector("h1");
 
-        //선택된 <h1>요소노드에 "click" 이벤트 등록 후 처리
-        title.addEventListener("click", ()=>{
+        //선택된 <h1>요소노드에 "click" 이벤트 등록 후 처리 
+        title.addEventListener("click",()=>{
 
+            //click 이벤트가 발생한 <h1>요소노드 삭제 
             title.remove();
 
         });
-        /*
-            주제 : DOM 트리에서 특정 노드를 삭제하는 방법
+      /*
+        주제 : DOM 트리에서 특정 노드를 삭제 하는 방법
 
-            remove()메소드
-            - 삭제대상 요소노드 자체를 삭제하는 메소드
-            - 기본문법
-                     삭제대상요소선택.remove();
-        
-        
-        
-        
-        */
+        remove()메소드
+        - 삭제대상 요소노드 자체를 삭제하는 메소드
+        - 기본문법
+                  삭제대상요소선택.remove();
+      */
 
 
+     </script>
 
-    </script>
 
 
 </body>
